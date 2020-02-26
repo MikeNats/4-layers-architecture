@@ -41,7 +41,7 @@ export const transactions = (state: TransactionsIitialStateType = initialState, 
         transactions: {
           ...state.transactions,
           isFetching: false,
-          didInvalidate: false,
+          didInvalidate: true,
           errorCode:  action.errorCode,
         }
       }
