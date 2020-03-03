@@ -37,9 +37,18 @@ export const transactions = (state: TransactionsStateType = initialStoreState, a
     case ACTIONS_ENUM_TYPES.FAILED_TRANSACTIONS:
       return {
         ...state,
+<<<<<<< HEAD
         isFetching: false,
         didInvalidate: true,
         errorCode: action.errorCode
+=======
+        transactions: {
+          ...state.transactions,
+          isFetching: false,
+          didInvalidate: true,
+          errorCode:  action.errorCode,
+        }
+>>>>>>> 5e8cfc2e07c5efa4abea76a44b9763139dafeeb1
       }
     default:
       return state

@@ -1,11 +1,6 @@
 import React from 'react';
 import routes from './routes'
 import './App.scss';
-import {
-  Switch,
-  Route,
-  HashRouter as Router,
-} from 'react-router-dom';
 
 function App() { 
   return (
