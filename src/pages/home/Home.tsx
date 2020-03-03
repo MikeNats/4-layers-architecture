@@ -2,23 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { fetchtransactions } from '../../actions'
-import { TransactionPayLoadType } from '../../actions/transactions/types'
-import { StateType } from '../../store/types'
+import { TransactionPayLoadItemType } from '../../actions/transactions/types'
 
-type Props = {
-  payload: TransactionPayLoadType
+type HomePropsType = {
+  payload: TransactionPayLoadItemType[]
   isFetching: Boolean,
   didInvalidate: Boolean,
-  errorCode: Number,
-  dispatch: Dispatch,
+  dispatch: Dispatch<any>
 };
 
-class Home extends React.Component <Props, StateType> {
+type HomeStateType = {
+  transactions: {
+    payload: TransactionPayLoadItemType[]
+    isFetching: Boolean,
+    didInvalidate: Boolean,
+    errorCode: number
+  }
+}
+
+class Home extends React.Component <HomePropsType, HomeStateType> {
   componentDidMount() {
     const { dispatch } = this.props;
     fetchtransactions(1)(dispatch);
   }
-
+ 
   render() {
     return (<section>
     <h1>{this.props.isFetching}</h1>
@@ -30,11 +37,11 @@ class Home extends React.Component <Props, StateType> {
   }
 }
 
-const mapStateToProps = (state: StateType) => ({
+const mapStateToProps = (state: HomeStateType) => ({
   payload: state.transactions.payload,
   isFetching: state.transactions.isFetching,
   didInvalidate: state.transactions.didInvalidate,
-  errorCode: state.transactions.errorCode
+  errorCode: state.transactions.errorCode,
 })
 
 export default connect(mapStateToProps)(Home);

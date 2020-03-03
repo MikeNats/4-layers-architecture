@@ -1,49 +1,45 @@
 import {
   ACTIONS_ENUM_TYPES,
   TransactionsActionTypes,
+  TransactionPayLoadItemType
 } from "../../actions/transactions/types";
-import { TransactionsIitialStateType } from './types'
 
-export const initialState: TransactionsIitialStateType = {
-  transactions: {
-    isFetching: false,
-    didInvalidate: false,
-    payload: [],
-    errorCode: undefined
-  }
+export interface TransactionsStateType {
+  payload: TransactionPayLoadItemType[]
+  isFetching: Boolean, 
+  didInvalidate: Boolean,
+  errorCode: Number
+} 
+
+export const initialStoreState: TransactionsStateType =  {
+  isFetching: false,
+  didInvalidate: false,
+  payload: [],
+  errorCode: 0
 }
 
-export const transactions = (state: TransactionsIitialStateType = initialState, action: TransactionsActionTypes): TransactionsIitialStateType  => {
+export const transactions = (state: TransactionsStateType = initialStoreState, action: TransactionsActionTypes): TransactionsStateType  => {
   switch (action.type) {
     case ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS:
       return {
         ...state,
-        transactions: {
-          ...state.transactions,
-          isFetching: true,
-          didInvalidate: false,
-          errorCode: undefined
-        }
+        isFetching: true,
+        didInvalidate: false,
       }
     case ACTIONS_ENUM_TYPES.RECEIVE_TRANSACTIONS:
       return {
         ...state,
-        transactions: {
-          isFetching: false,  
-          didInvalidate: false,
-          errorCode: undefined,
-          payload: action.payload,
-        }
+        isFetching: false,  
+        didInvalidate: false,
+        payload: action.payload,
+        errorCode: 0 
       }
     case ACTIONS_ENUM_TYPES.FAILED_TRANSACTIONS:
       return {
         ...state,
-        transactions: {
-          ...state.transactions,
-          isFetching: false,
-          didInvalidate: false,
-          errorCode:  action.errorCode,
-        }
+        isFetching: false,
+        didInvalidate: true,
+        errorCode: action.errorCode
       }
     default:
       return state
