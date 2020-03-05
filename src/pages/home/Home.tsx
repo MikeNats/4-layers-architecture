@@ -8,40 +8,43 @@ type HomePropsType = {
   payload: TransactionPayLoadItemType[]
   isFetching: Boolean,
   didInvalidate: Boolean,
-  dispatch: Dispatch<any>
+  errorCode: Number,
+  dispatch: Dispatch,
+  getTransactionsProps: typeof fetchtransactions
 };
 
 type HomeStateType = {
-  transactions: {
     payload: TransactionPayLoadItemType[]
     isFetching: Boolean,
     didInvalidate: Boolean,
     errorCode: number
-  }
 }
 
 class Home extends React.Component <HomePropsType, HomeStateType> {
   componentDidMount() {
-    const { dispatch } = this.props;
-    fetchtransactions(1)(dispatch);
+    const { getTransactionsProps } = this.props;
+    getTransactionsProps(1)
   }
  
-  render() {
+  render() { 
     return (<section>
-    <h1>{this.props.isFetching}</h1>
-      <section>
-      </section>
-      <aside>
-      </aside>
-    </section>);
+      <h1>{this.props.isFetching}</h1>
+        <section>
+        </section>
+        <aside>
+        </aside>
+      </section>);
   }
 }
-
-const mapStateToProps = (state: HomeStateType) => ({
-  payload: state.transactions.payload,
-  isFetching: state.transactions.isFetching,
-  didInvalidate: state.transactions.didInvalidate,
-  errorCode: state.transactions.errorCode,
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    getTransactionsProps: (n:number) => fetchtransactions(n)(dispatch)
 })
 
-export default connect(mapStateToProps)(Home);
+const mapStateToProps = (state: HomeStateType) => ({
+  payload: state.payload,
+  isFetching: state.isFetching,
+  didInvalidate: state.didInvalidate,
+  errorCode: state.errorCode,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
