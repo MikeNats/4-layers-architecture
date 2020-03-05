@@ -2,39 +2,49 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { fetchtransactions } from '../../actions'
-import { TransactionPayLoadType } from '../../actions/transactions/types'
-import { StateType } from '../../store/types'
+import { TransactionPayLoadItemType } from '../../actions/transactions/types'
 
-type Props = {
-  payload: TransactionPayLoadType
+type HomePropsType = {
+  payload: TransactionPayLoadItemType[]
   isFetching: Boolean,
   didInvalidate: Boolean,
   errorCode: Number,
   dispatch: Dispatch,
+  getTransactionsProps: typeof fetchtransactions
 };
 
-class Home extends React.Component <Props, StateType> {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    fetchtransactions(1)(dispatch);
-  }
-
-  render() {
-    return (<section>
-    <h1>{this.props.isFetching}</h1>
-      <section>
-      </section>
-      <aside>
-      </aside>
-    </section>);
-  }
+type HomeStateType = {
+    payload: TransactionPayLoadItemType[]
+    isFetching: Boolean,
+    didInvalidate: Boolean,
+    errorCode: number
 }
 
-const mapStateToProps = (state: StateType) => ({
-  payload: state.transactions.payload,
-  isFetching: state.transactions.isFetching,
-  didInvalidate: state.transactions.didInvalidate,
-  errorCode: state.transactions.errorCode
+class Home extends React.Component <HomePropsType, HomeStateType> {
+  componentDidMount() {
+    const { getTransactionsProps } = this.props;
+    getTransactionsProps(1)
+  }
+ 
+  render() { 
+    return (<section>
+      <h1>{this.props.isFetching}</h1>
+        <section>
+        </section>
+        <aside>
+        </aside>
+      </section>);
+  }
+}
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    getTransactionsProps: (n:number) => fetchtransactions(n)(dispatch)
 })
 
-export default connect(mapStateToProps)(Home);
+const mapStateToProps = (state: HomeStateType) => ({
+  payload: state.payload,
+  isFetching: state.isFetching,
+  didInvalidate: state.didInvalidate,
+  errorCode: state.errorCode,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
