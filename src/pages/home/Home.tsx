@@ -28,7 +28,7 @@ class Home extends React.Component <HomePropsType, HomeStateType> {
  
   render() { 
     return (<section>
-      <h1>{this.props.isFetching}</h1>
+      <h1>HOME</h1>
         <section>
         </section>
         <aside>

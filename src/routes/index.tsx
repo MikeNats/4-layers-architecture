@@ -1,6 +1,7 @@
 import React from 'react';
 import LogIn from '../pages/login/LogIn';
 import Home from  '../pages/home/Home';
+import PrivateRoute from  './protected'
 import {
   Switch,
   Route,
@@ -11,8 +12,8 @@ export default () =>  {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Home} /> 
-        <Route path="/login" component={LogIn} /> 
+      <Route exact path="/login" component={LogIn} /> 
+      <PrivateRoute path="/*" component={Home}/>
       </Switch>
     </Router>); 
 }
