@@ -1,16 +1,20 @@
-import React from 'react';
+import React from 'react'
 import routes from './routes'
+import { AppContext, initialAppContext } from './context'
 import './App.scss';
+
 
 function App() { 
   return (
-    <section className="App">
-      <header className="App-header">
-      </header>
-      <section>
-       {routes()}
+    <AppContext.Provider value={initialAppContext}>
+      <section className="App">
+        <header className="App-header">
+        </header>
+        <section>
+        {routes()}
+        </section>
       </section>
-    </section>
+    </AppContext.Provider>
   ); 
 }
 
