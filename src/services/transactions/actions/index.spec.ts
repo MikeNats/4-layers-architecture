@@ -57,7 +57,7 @@ import {
         }
         const response = {
           data: {
-            payload: [{
+            payload:[{
               date: 43565,
               amount: 23456,
               product: 'name',
@@ -68,7 +68,7 @@ import {
      
         axios.get = jest.fn().mockResolvedValue(response);
         fetchtransactions(1)(mock.dispatch).then((res: typeof response) => {
-          expect(res.data).toEqual(response.data);
+          expect(mock.dispatch).toHaveBeenCalledWith(responseTransactions(response.data));
         }) 
       })
     })

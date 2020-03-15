@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { fetchtransactions } from '../../actions'
-import { TransactionPayLoadItemType } from '../../actions/transactions/types'
+import { TransactionPayloadItemType } from '../../services/transactions/actions/types'
 
 type HomePropsType = {
-  payload: TransactionPayLoadItemType[]
+  payload:TransactionPayloadItemType[]
   isFetching: Boolean,
   didInvalidate: Boolean,
   errorCode: Number,
@@ -14,7 +14,7 @@ type HomePropsType = {
 };
 
 type HomeStateType = {
-    payload: TransactionPayLoadItemType[]
+    payload:TransactionPayloadItemType[]
     isFetching: Boolean,
     didInvalidate: Boolean,
     errorCode: number
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 })
 
 const mapStateToProps = (state: HomeStateType) => ({
-  payload: state.payload,
+  payload:state.payload,
   isFetching: state.isFetching,
   didInvalidate: state.didInvalidate,
   errorCode: state.errorCode,

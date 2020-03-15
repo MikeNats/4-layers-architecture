@@ -1,25 +1,25 @@
 import { Dispatch } from 'redux'
 import { 
-  TransactionPayLoadItemType, 
+  TransactionPayloadItemType, 
   TransactionsActionTypes,
-  requestTransactionsActionType,
-  responseTransactionsActionsType,
-  failGetTransactionsActionType,
+  RequestTransactionsActionType,
+  ResponseTransactionsActionsType,
+  FailGetTransactionsActionType,
   ACTIONS_ENUM_TYPES
 } from './types';
 import axios from 'axios';
 
-export const requestTransactions = (index: number): requestTransactionsActionType => ({
+export const requestTransactions = (index: number): RequestTransactionsActionType => ({
   type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS,
   index
 })
 
-export const responseTransactions = (payload: TransactionPayLoadItemType[]): responseTransactionsActionsType => ({
+export const responseTransactions = (payload:TransactionPayloadItemType[]): ResponseTransactionsActionsType => ({
   type: ACTIONS_ENUM_TYPES.RECEIVE_TRANSACTIONS,
   payload
 })
 
-export const failGetTransactions = (errorCode: number): failGetTransactionsActionType => ({
+export const failGetTransactions = (errorCode: number): FailGetTransactionsActionType => ({
   type: ACTIONS_ENUM_TYPES.FAILED_TRANSACTIONS,
   errorCode
 })

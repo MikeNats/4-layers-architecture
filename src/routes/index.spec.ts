@@ -21,14 +21,14 @@ describe("ApRoutes", () => {
       expect(component).toMatchSnapshot();
     });
 
-    it('route / to Home', () => {
-      const component = shallow(element);
-      expect(component.find('Route[path="/"]').first().prop('component')).toBe(Home);
+    it('route / unauthenticated  to login', () => {
+      const component = shallow(element).find('Route[path="/login"]');
+      expect(component.prop('component')).toBe(LogIn);
     });
 
     it('route /login to LogIn', () => {
-      const component = shallow(element);
-      expect(component.find('Route[path="/login"]').first().prop('component')).toBe(LogIn);
+      const component = shallow(element).find('PrivateRoute[path="/*"]');
+      expect(component.prop('component')).toBe(Home);
     });
   });
 

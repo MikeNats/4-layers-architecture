@@ -1,11 +1,11 @@
 import {
   ACTIONS_ENUM_TYPES,
   TransactionsActionTypes,
-  TransactionPayLoadItemType
-} from "../../actions/transactions/types";
+  TransactionPayloadItemType
+} from "../actions/types";
 
 export interface TransactionsStateType {
-  payload: TransactionPayLoadItemType[]
+  payload:TransactionPayloadItemType[]
   isFetching: Boolean, 
   didInvalidate: Boolean,
   errorCode: Number
@@ -14,7 +14,7 @@ export interface TransactionsStateType {
 export const initialStoreState: TransactionsStateType =  {
   isFetching: false,
   didInvalidate: false,
-  payload: [],
+  payload:[],
   errorCode: 0
 }
 
@@ -31,7 +31,7 @@ export const transactions = (state: TransactionsStateType = initialStoreState, a
         ...state,
         isFetching: false,  
         didInvalidate: false,
-        payload: action.payload,
+        payload:action.payload,
         errorCode: 0 
       }
     case ACTIONS_ENUM_TYPES.FAILED_TRANSACTIONS:

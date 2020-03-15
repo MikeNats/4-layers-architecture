@@ -5,14 +5,13 @@ import thunk from 'redux-thunk';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { fetchtransactions } from '../../actions/transactions'
-jest.mock('../../actions/transactions');
-
+import { fetchtransactions } from '../../services/transactions/actions'
+jest.mock('../../services/transactions/actions');
 
 Enzyme.configure({ adapter: new Adapter() })
 
 const initialState = { 
-  payload: [],
+  payload:[],
   isFetching: false,
   didInvalidate: false,
   errorCode: 0,

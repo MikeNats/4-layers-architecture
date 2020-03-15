@@ -4,11 +4,11 @@ import {
   import {
     ACTIONS_ENUM_TYPES,
     TransactionsActionTypes
-  } from '../../actions/transactions/types';
+  } from '../actions/types';
   const initialState = {
     isFetching: false,
     didInvalidate: false,
-    payload: [],
+    payload:[],
     errorCode: 0
   }
   
@@ -22,14 +22,14 @@ import {
         expect(transactions(initialState, action)).toEqual({
           isFetching: true,
           didInvalidate: false,
-          payload: [],
+          payload:[],
           errorCode: 0
         })
       })
-      it('should update payload attr if RECEIVE_TRANSACTIONS', ()=> {
+      it('should update payload:attr if RECEIVE_TRANSACTIONS', ()=> {
         const action: TransactionsActionTypes = {
           type: ACTIONS_ENUM_TYPES.RECEIVE_TRANSACTIONS,
-          payload: [{  
+          payload:[{  
             date: 124234,
             amount: 234234,
             product: 'erfwerqe',
@@ -40,7 +40,7 @@ import {
         expect(transactions(initialState, action)).toEqual({
             isFetching: false,
             didInvalidate: false,
-            payload: [{  
+            payload:[{  
               date: 124234,
               amount: 234234,
               product: 'erfwerqe',
@@ -58,7 +58,7 @@ import {
         expect(transactions(initialState, action)).toEqual({
           isFetching: false,
           didInvalidate: true,
-          payload: [],
+          payload:[],
           errorCode: 401
         })
       })
