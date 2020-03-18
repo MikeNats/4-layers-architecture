@@ -1,7 +1,7 @@
 
 export default async (userName: string, password: string): Promise<{userId: string}> =>
-  new Promise((resolve, reject) => {
-    console.log('mock loging', userName, password)
+  await new Promise((resolve, reject) => {
+    console.log('mock loging service', userName, password)
     setTimeout(() => {
       resolve({
         userId: '123',

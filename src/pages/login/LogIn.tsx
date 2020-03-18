@@ -1,15 +1,12 @@
 import React from 'react';
-import Form from '../../components/form/Form'
+import LogInForm from '../../components/logInForm/LogInForm'
 
 export default () => {
   return (
     <section>
       <h1>LogIn</h1>
       <section>
-      {/* <AppContext.Consumer> {({ setAuth }) => setAuth && (  */}
-        <Form></Form>
-      {/* //  )}
-      // </AppContext.Consumer>  */}
+        <LogInForm></LogInForm>
       </section>
     </section> 
   );
