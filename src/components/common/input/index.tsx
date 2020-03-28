@@ -10,9 +10,11 @@ interface InputPropsType {
   className: string,
   label: string,
   placeholder: string
+  error:boolean;
+  errorMessage:string
 }
 
-const FormInput = ({
+const Input = ({
   id,
   name,
   type, 
@@ -20,31 +22,34 @@ const FormInput = ({
   onChangeHandler,
   className,
   label,
+  error,
+  errorMessage,
   ...props
 }: InputPropsType) => {
-  
+
   return (
     <React.Fragment>
-      <label className={className} htmlFor={name}>{label}</label>
       <input
-        id={id}
+        id={id} 
         name={name}
         type={type}
+        className={`comp-input ${className} ${error? 'error' : '' }`}
         placeholder={placeholder}
-        onChange={(
-          e:  React.ChangeEvent<HTMLInputElement>
-            ): void => {e.persist(); onChangeHandler(e.currentTarget.value)}}
-        className={className}
+        onChange={(e:  React.ChangeEvent<HTMLInputElement>)=> 
+          {e.persist(); onChangeHandler(e.currentTarget.value)}}
         {...props}
       />
-      </React.Fragment>
-   )
+      <p className={`errorMessage hide ${error? 'show' : '' }`}>{errorMessage}</p>
+    </React.Fragment>
+  )
 }
-
-FormInput.defaultProps = {
-  type: 'text',
+ 
+Input.defaultProps = {
+  type: 'text', 
   className: '',
   placeholder: '',
+  errorMessage: '',
+  error: false
 }
 
-export default FormInput
+export default Input

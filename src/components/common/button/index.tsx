@@ -1,23 +1,25 @@
 import React from "react";
 
 type propsType = {
-  className: string,
+  className?: string,
   children: string,
   onClickHandler: Function
+  disabled: boolean
 }
-
+ 
 const Button = ({
   onClickHandler, 
   className, 
-  ...props
+  ...props  
   }: propsType) => {
 
   return (
     <button
-      className={className}
+      className={`comp-button ${className}`}    
       onClick={(
         e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-          ): void => {onClickHandler(e)}}>
+          ): void => {onClickHandler(e)}}
+        {...props}>
       { props.children }
     </button>
   );

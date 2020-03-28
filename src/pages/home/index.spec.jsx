@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from './Home'
+import Home from '.'
 import { shallow, mount } from 'enzyme';
 import thunk from 'redux-thunk';
 import Adapter from 'enzyme-adapter-react-16';

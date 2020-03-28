@@ -10,7 +10,7 @@ type PrivateRouteType = {
 }
 const PrivateRoute = ({ component: Component, ...props }: PrivateRouteType) => (
   <AppContext.Consumer>
-     {(context) => (
+     {context => (
         <Route {...props} render={props => (
           context.authenticated ? (
             <Component {...props} />
@@ -19,7 +19,6 @@ const PrivateRoute = ({ component: Component, ...props }: PrivateRouteType) => (
             )
         )} />
      )}
-
   </AppContext.Consumer>)
 
 export default PrivateRoute

@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './'
+import Button from '.'
 import { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';

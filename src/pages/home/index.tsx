@@ -14,10 +14,10 @@ type HomePropsType = {
 };
 
 type HomeStateType = {
-    payload:TransactionPayloadItemType[]
-    isFetching: Boolean,
-    didInvalidate: Boolean,
-    errorCode: number
+  payload:TransactionPayloadItemType[]
+  isFetching: Boolean,
+  didInvalidate: Boolean,
+  errorCode: number
 }
 
 class Home extends React.Component <HomePropsType, HomeStateType> {
@@ -27,7 +27,8 @@ class Home extends React.Component <HomePropsType, HomeStateType> {
   }
  
   render() { 
-    return (<section>
+    return (
+    <section>
       <h1>HOME</h1>
         <section>
         </section>
@@ -37,7 +38,7 @@ class Home extends React.Component <HomePropsType, HomeStateType> {
   }
 }
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    getTransactionsProps: (n:number) => fetchtransactions(n)(dispatch)
+  getTransactionsProps: (n:number) => fetchtransactions(n)(dispatch)
 })
 
 const mapStateToProps = (state: HomeStateType) => ({

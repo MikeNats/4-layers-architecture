@@ -7,15 +7,15 @@ import './App.scss';
 function App() { 
   return (
     <AppContext.Provider value={initialAppContext}>
-      <section className="App">
-        <header className="App-header">
-        </header>
-        <section>
+      <AppContext.Consumer>
+      {context =>
+        <section className={`app ${context.theme}`}>
         {routes()}
-        </section>
       </section>
+      } 
+      </AppContext.Consumer> 
     </AppContext.Provider>
   ); 
 }
 
-export default App;
+export default App; 

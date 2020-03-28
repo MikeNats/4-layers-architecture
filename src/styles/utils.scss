@@ -1,0 +1,19 @@
+@function map-extend($map, $maps) {
+  @each $key, $value in $maps {
+    $map: map-merge($map, ($key: $value));
+  }
+  @return $map;
+}
+  
+  
+@mixin theming($themes, $attrs) {
+  @each $theme, $map in $themes {
+    .#{$theme} & {
+      @each $key, $value in $attrs {
+        #{$key}: map-get($map, $value);
+      }
+    }
+  }
+}
+  
+  
