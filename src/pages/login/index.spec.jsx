@@ -1,6 +1,5 @@
 import React from 'react'
 import LogInFormPage from '.'
-import LogInForm from '../../components/logInForm'
 import { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';

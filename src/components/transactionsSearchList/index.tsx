@@ -24,7 +24,6 @@ class TransactionSearchList extends React.Component<PropsTypes, LocalState> {
 
   constructor(props: PropsTypes) {
     super(props);
-    
     this.state = {
       activeListItems: this.props.transactions,
       short: null    
@@ -39,8 +38,8 @@ class TransactionSearchList extends React.Component<PropsTypes, LocalState> {
 
   private shortTransactions = (value: sortingType | null, transactionPayload: Array<TransactionPayloadItemType>) => {
     const sortingType = {
-      "A-Z": (a:TransactionPayloadItemType, b: TransactionPayloadItemType) =>  a.product < b.product ? -1 : 1,
-      "Z-A": (a:TransactionPayloadItemType, b: TransactionPayloadItemType) =>  a.product < b.product ? 1 : -1,
+      "Z-A": (a:TransactionPayloadItemType, b: TransactionPayloadItemType) =>  a.product < b.product ? -1 : 1,
+      "A-Z": (a:TransactionPayloadItemType, b: TransactionPayloadItemType) =>  a.product < b.product ? 1 : -1,
       "none": () =>  0
     } 
     return this.setState({

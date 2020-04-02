@@ -30,7 +30,7 @@ const middlewares = [thunk],
       image: 'string'}],
     isFetching: false,
     didInvalidate: false,
-    errorCode: 0,}
+    errorCode: 0}
   })
 describe("Transactions", () => {
   describe('component', () => {
