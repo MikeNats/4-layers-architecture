@@ -1,19 +1,24 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { AppContext } from '../../context'
+import PATHS from '../PATHS'
 
-const PrivateRoute = ({ component: Component, ...rest }: any) => (
+type PrivateRouteType = {
+  component: React.ComponentType<any>
+  path: string
+  exact?: boolean
+}
+const PrivateRoute = ({ component: Component, ...props }: PrivateRouteType) => (
   <AppContext.Consumer>
-     {(context) => (
-        <Route {...rest} render={props => (
+     {context => (
+        <Route {...props} render={props => (
           context.authenticated ? (
             <Component {...props} />
             ) : (
-            <Redirect to='/login'/>
+            <Redirect to={PATHS.LOGIN}/>
             )
         )} />
      )}
-
   </AppContext.Consumer>)
 
 export default PrivateRoute

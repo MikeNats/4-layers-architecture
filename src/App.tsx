@@ -3,19 +3,13 @@ import routes from './routes'
 import { AppContext, initialAppContext } from './context'
 import './App.scss';
 
-
-function App() { 
-  return (
-    <AppContext.Provider value={initialAppContext}>
-      <section className="App">
-        <header className="App-header">
-        </header>
-        <section>
-        {routes()}
-        </section>
-      </section>
-    </AppContext.Provider>
-  ); 
-}
-
-export default App;
+export default () => (
+  <AppContext.Provider value={initialAppContext}>
+    <AppContext.Consumer>
+      { context =>
+        <section className={`app ${context.theme}`}>
+          {routes()}
+        </section> 
+      } 
+    </AppContext.Consumer> 
+  </AppContext.Provider>)

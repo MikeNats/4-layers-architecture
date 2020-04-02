@@ -1,2 +1,2 @@
-import { fetchtransactions } from './transactions'
+import { fetchtransactions } from '../services/transactions/actions'
 export { fetchtransactions } 
