@@ -9,9 +9,8 @@ import {
 } from './types';
 import axios from 'axios';
 
-export const requestTransactions = (index: number): RequestTransactionsActionType => ({
-  type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS,
-  index
+export const requestTransactions = (): RequestTransactionsActionType => ({
+  type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS
 })
 
 export const responseTransactions = (payload:TransactionPayloadItemType[]): ResponseTransactionsActionsType => ({
@@ -24,12 +23,11 @@ export const failGetTransactions = (errorCode: number): FailGetTransactionsActio
   errorCode
 })
 
-export const fetchtransactions = (n: number): Function => 
+export const fetchtransactions = (): Function => 
   (dispatch: Dispatch<TransactionsActionTypes>): Promise<TransactionsActionTypes> =>  {
-    dispatch(requestTransactions(n));
+    dispatch(requestTransactions());
 
     return axios.get(`http://localhost:3000/mockData/transactions.json`)
       .then(response => dispatch(responseTransactions(response.data)))
       .catch(error => dispatch(failGetTransactions(error.errorCode)))
   }
-

@@ -6,5 +6,5 @@ export const auth =  async (userName: string, password: string): Promise<{userId
       resolve({
         userId: '123',
       })
-    }, 1500)
+    }, 500)
 })

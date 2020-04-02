@@ -9,11 +9,6 @@ body {
     margin: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 fieldset{
   border: none;
   padding: 10px;
@@ -35,12 +30,6 @@ input:focus{
 }
 .show{
   display: block
-}
-.template-HorizVerticAlign {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh
 }
 
 .align-content-center{

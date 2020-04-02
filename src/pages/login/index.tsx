@@ -3,7 +3,7 @@ import LogInForm from '../../components/logInForm'
 
 export default () => {
   return (
-    <main className="template-HorizVerticAlign">
+    <main className="base-layout horiz-vertic-align-layout">
         <LogInForm ></LogInForm>
     </main> 
   );

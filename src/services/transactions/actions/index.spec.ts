@@ -12,9 +12,8 @@ import {
   describe('Transactions Actions', ()=> {
     describe('requestTransactions should be a prure function', () => {
       it('should be a prure function', ()=> {
-        expect(requestTransactions(5)).toEqual({
+        expect(requestTransactions()).toEqual({
           type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS,
-          index: 5
         })
       })
     })
@@ -48,7 +47,7 @@ import {
      
         axios.get = jest.fn().mockResolvedValue({});
   
-        fetchtransactions(1)(mock.dispatch)
+        fetchtransactions()(mock.dispatch)
         expect(mock.dispatch).toHaveBeenCalledWith(requestTransactions(1));
       })
       it('should invoke responseTransactions if call resolve', () => {
@@ -65,9 +64,9 @@ import {
             }]
           }
         }
-     
+      
         axios.get = jest.fn().mockResolvedValue(response);
-        fetchtransactions(1)(mock.dispatch).then((res: typeof response) => {
+        fetchtransactions()(mock.dispatch).then((res: typeof response) => {
           expect(mock.dispatch).toHaveBeenCalledWith(responseTransactions(response.data));
         }) 
       })

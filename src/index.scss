@@ -1,6 +1,9 @@
 @import 'styles/utils';
-@import 'styles/global';
+@import 'styles/base';
+@import 'styles/layouts'; 
 @import 'styles/themes/index';
-@import 'components/logInForm';
 @import 'components/common/input';
 @import 'components/common/button';
+@import 'components/common/select';
+@import 'components/logInForm';
+@import 'components/transactionsListItem/';

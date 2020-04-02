@@ -1,7 +1,43 @@
 [{
     "date":"2020-02-23T14:40:55.275Z",
+    "amount": "3200",
+    "currency": "$",
+    "product": "Grocery",
+    "image": "https://picsum.photos/100/100?random=1"
+},
+{
+    "date":"2020-04-23T14:40:55.275Z",
+    "amount": "45000",
+    "currency": "$",
+    "product": "Clothes",
+    "image": "https://picsum.photos/100/100?random=1"
+},
+{
+    "date":"2020-08-23T14:40:55.275Z",
+    "amount": "38000",
+    "currency": "$",
+    "product": "Gazoline",
+    "image": "https://picsum.photos/100/100?random=1"
+},
+{
+    "date":"2020-02-23T14:40:55.275Z",
     "amount": "32",
-    "product": "grocery",
-    "image": "https://picsum.photos/200/300?random=1"
+    "currency": "$",
+    "product": "Gums",
+    "image": "https://picsum.photos/100/100?random=1"
+},
+{
+    "date":"2020-09-23T14:40:55.275Z",
+    "amount": "59000",
+    "currency": "$",
+    "product": "Electricity",
+    "image": "https://picsum.photos/100/100?random=1"
+},
+{
+    "date":"2020-04-23T14:40:55.275Z",
+    "amount": "13000",
+    "currency": "$",
+    "product": "Council Tax",
+    "image": "https://picsum.photos/100/100?random=1"
 }]
 

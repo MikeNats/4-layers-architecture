@@ -1,13 +1,14 @@
 
 import React from 'react';
 
-interface InputPropsType {
+type InputPropsType= {
   id: string,
   type: string,
   name: string
-  required: boolean,
+  required?: boolean,
+  checked?: boolean
   onChangeHandler: Function
-  className: string,
+  className?: string,
   label: string,
   placeholder: string
   error:boolean;
@@ -18,16 +19,15 @@ const Input = ({
   id,
   name,
   type, 
-  placeholder,
+  placeholder = '',
   onChangeHandler,
+  checked,
   className,
   label,
-  error,
-  errorMessage,
+  error = false, 
+  errorMessage = '',
   ...props
-}: InputPropsType) => {
-
-  return (
+}: InputPropsType) => (
     <React.Fragment>
       <input
         id={id} 
@@ -42,7 +42,6 @@ const Input = ({
       <p className={`errorMessage hide ${error? 'show' : '' }`}>{errorMessage}</p>
     </React.Fragment>
   )
-}
  
 Input.defaultProps = {
   type: 'text', 

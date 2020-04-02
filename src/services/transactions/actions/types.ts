@@ -5,16 +5,15 @@ export enum ACTIONS_ENUM_TYPES{
   FAILED_TRANSACTIONS = 'FAILED_TRANSACTIONS'
 }
 
-export type TransactionPayloadItemType = {
-  readonly date: number;
-  readonly amount: number;
-  readonly product: string;
-  readonly image: string
+export interface TransactionPayloadItemType{
+   date: string;
+   amount: number;
+   product: string;
+   image: string
 }
 
 export interface RequestTransactionsActionType extends Action{
   type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS,
-  index: number
 }
 
 export interface ResponseTransactionsActionsType extends Action{

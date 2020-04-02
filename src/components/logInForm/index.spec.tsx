@@ -18,6 +18,9 @@ Enzyme.configure({ adapter: new Adapter() })
 describe("LogInForm", () => {
   describe('component', () => {
     let component
+    afterEach(() => {    
+      jest.clearAllMocks();
+    });
     it('renders as expected', () => {
       component = shallow(<LogInForm /> );
 
@@ -33,13 +36,6 @@ describe("LogInForm", () => {
       
       expect(component.length).toBe(3)
     });
-    it('should render two lebels', () => {	
-      component = mount(<Router><LogInForm /></Router>).find('label')
-
-      expect(component.length).toBe(2)
-      expect(component.at(0).text()).toBe('user name:')
-      expect(component.at(1).text()).toBe('password:')
-    });
     it('should render two inputs', () => {	
       component = mount(<Router><LogInForm /></Router>).find('input')
 
@@ -54,21 +50,38 @@ describe("LogInForm", () => {
     it('should authenticate on submition and redirect', async () => {
       auth.mockImplementation(() => Promise.resolve({userId: 'sdf'}));
       const tick = () => new Promise(resolve =>
-        setTimeout(resolve, 0))
+        setTimeout(resolve, 600))
 
-      component = mount(<AppContext.Provider value={initialAppContext}>
+      const component = mount(<AppContext.Provider value={initialAppContext}>
         <Router><Switch><LogInForm /></Switch></Router></AppContext.Provider>)
-      component.find('input').at(0).simulate('change', { currentTargert: { value: 'username' } });
-      component.find('input').at(1).simulate('change', { currentTargert: { value: 'pass' } });
-      component.find('button').simulate('click')
-      await tick();
-
-      component.update();
+      component.find('input').at(0).prop('onChange')({ currentTarget: { value: 'usekrname' },persist: ()=>{} })
+      component.find('input').at(1).prop('onChange')({ currentTarget: { value: 'pakss' },persist: ()=>{} })
+      component.find('button').simulate('click', {preventDefault: ()=>{}})
+      await tick(); 
+      component.update(); 
       
       expect(auth).toBeCalled()
       expect(initialAppContext.authenticated).toBe(true) 
       expect(component.find(LogInForm).props().location.pathname).toEqual('/home') 
       component.unmount()
     });
+
+    it('should not authenticate on submition when no value is provided', async () => {
+      auth.mockImplementation(() => Promise.resolve({userId: 'sdf'}));
+      const tick = () => new Promise(resolve =>
+        setTimeout(resolve, 600))
+      initialAppContext.authenticated = false
+      const component = mount(<AppContext.Provider value={initialAppContext}>
+        <Router><Switch><LogInForm /></Switch></Router></AppContext.Provider>)
+      component.find('input').at(0).prop('onChange')({ currentTarget: { value: '' },persist: ()=>{} })
+      component.find('input').at(1).prop('onChange')({ currentTarget: { value: '' },persist: ()=>{} })
+      component.find('button').simulate('click', {preventDefault: ()=>{}})
+      await tick(); 
+     
+      component.update(); 
+      expect(auth).not.toBeCalled()
+      expect(initialAppContext.authenticated).toBe(false) 
+      component.unmount()
+    });
   });
-});
+}); 

@@ -1,5 +1,6 @@
 import React from 'react'
-import Home from '.'
+import LogInFormPage from '.'
+import LogInForm from '../../components/logInForm'
 import { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
@@ -8,19 +9,20 @@ jest.mock('../../services/transactions/actions');
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe("Home", () => {
+describe("LogInFormPage", () => {
   describe('component', () => {
     let component
     it('renders as expected', () => {
 
-      component = shallow(<Home className="test" /> );
+      component = shallow(<LogInFormPage /> );
       expect(component).toMatchSnapshot();
    });
    it('should set to props', () => {	
-		  component = shallow(<Home className="test" />).find('main');
+		  component = shallow(<LogInFormPage />).find('main');
 
      expect(component.props()).toHaveProperty('className');
-     expect(component.prop("className")).toEqual('base-layout test');
-  	});
+     expect(component.prop("className")).toEqual('base-layout horiz-vertic-align-layout');
+    });
   });
 });
+ 

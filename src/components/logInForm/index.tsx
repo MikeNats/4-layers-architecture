@@ -28,6 +28,7 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
   private submitForm = (e: React.FormEvent<HTMLFormElement>): void => {
     const { state } = this;
     e.preventDefault();
+ 
 
     if (!state.error.email && !state.error.password) {
       onFormSubmition(this);
@@ -36,7 +37,6 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
 
   private updateEmail = throttle(value => {
     const { state } = this;
-
     if (value){
       this.setState({ 
         ...state,
@@ -53,12 +53,11 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
           isFormValid: false,
           email: true }})
     }
-  }, 1000)
+  }, 500)
 
 
   private updatePassword = throttle(value => {
     const { state } = this;
-
     if (value){
       this.setState({ 
         ...state,
@@ -75,7 +74,7 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
           isFormValid: false,
           password: true }})       
     }
-  }, 1000)
+  }, 500)
 
   public render = () => ( 
     <form 

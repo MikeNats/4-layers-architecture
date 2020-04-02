@@ -4,7 +4,7 @@ type propsType = {
   className?: string,
   children: string,
   onClickHandler: Function
-  disabled: boolean
+  disabled?: boolean
 }
  
 const Button = ({

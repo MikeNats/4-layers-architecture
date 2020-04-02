@@ -21,7 +21,7 @@ describe("Button", () => {
    it('should set className based on props', () => {	
     component = shallow(button(onClickHandler))
 
-    expect(component.props().className).toEqual('test');
+    expect(component.props().className).toEqual('comp-button test');
   });
   it('should set text based on props', () => {	
     component = shallow(button(onClickHandler))
