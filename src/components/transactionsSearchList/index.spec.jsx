@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 
-jest.mock('../../services/transactions/actions');
+jest.mock('../../services');
 
 Enzyme.configure({ adapter: new Adapter() })
 const transactions = [{ 

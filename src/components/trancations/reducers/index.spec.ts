@@ -16,7 +16,6 @@ import {
       it('should update isFetching attr if REQUEST_TRANSACTIONS', ()=> {
         const action: TransactionsActionTypes = {
           type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS,
-          index: 5
         }
   
         expect(transactions(initialState, action)).toEqual({
@@ -30,7 +29,7 @@ import {
         const action: TransactionsActionTypes = {
           type: ACTIONS_ENUM_TYPES.RECEIVE_TRANSACTIONS,
           payload:[{  
-            date: 124234,
+            date: '124234',
             amount: 234234,
             product: 'erfwerqe',
             image:'asdasd'
@@ -41,7 +40,7 @@ import {
             isFetching: false,
             didInvalidate: false,
             payload:[{  
-              date: 124234,
+              date: '124234',
               amount: 234234,
               product: 'erfwerqe',
               image:'asdasd'

@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import Input from './index'
 import { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -6,10 +6,8 @@ import Enzyme from 'enzyme';
 
 Enzyme.configure({ adapter: new Adapter() })
 
-   
 describe("Input", () => {
   describe('component', () => {
-    let component
     let onChangeHandler = jest.fn()
     
     it('renders as expected', () => {
@@ -44,7 +42,7 @@ describe("Input", () => {
 
       it('should invoke `clickHandler` on click', () => {
           const event = { persist: ()=>{}, currentTarget: {value: "spam"}};	
-          component = shallow(<Input  
+          shallow(<Input  
             id="password" 
             name="password"
             type="password"

@@ -7,10 +7,10 @@ import {
   Switch,
   HashRouter as Router
 } from 'react-router-dom';
-import { auth } from '../../services/auth'
+import fetch from '../../services'
 import {AppContext, initialAppContext } from '../../context'
 
-jest.mock('../../services/auth');
+jest.mock('../../services');
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -48,7 +48,7 @@ describe("LogInForm", () => {
       expect(component.text()).toEqual('submit')
     });
     it('should authenticate on submition and redirect', async () => {
-      auth.mockImplementation(() => Promise.resolve({userId: 'sdf'}));
+      fetch.mockImplementation(() => Promise.resolve({data: {csrfToken: "asdfasdf", userId:324234}})); 
       const tick = () => new Promise(resolve =>
         setTimeout(resolve, 600))
 
@@ -60,14 +60,14 @@ describe("LogInForm", () => {
       await tick(); 
       component.update(); 
       
-      expect(auth).toBeCalled()
+      expect(fetch).toBeCalled()
       expect(initialAppContext.authenticated).toBe(true) 
       expect(component.find(LogInForm).props().location.pathname).toEqual('/home') 
       component.unmount()
     });
 
     it('should not authenticate on submition when no value is provided', async () => {
-      auth.mockImplementation(() => Promise.resolve({userId: 'sdf'}));
+      fetch.mockImplementation(() => Promise.resolve({data: {csrfToken: "asdfasdf", userId:324234}}));
       const tick = () => new Promise(resolve =>
         setTimeout(resolve, 600))
       initialAppContext.authenticated = false
@@ -79,7 +79,7 @@ describe("LogInForm", () => {
       await tick(); 
      
       component.update(); 
-      expect(auth).not.toBeCalled()
+      expect(fetch).not.toBeCalled()
       expect(initialAppContext.authenticated).toBe(false) 
       component.unmount()
     });

@@ -2,11 +2,10 @@
 import React from 'react';
 import Input from '../common/input'
 import Button from '../common/button'
-
 import { withRouter, RouteComponentProps } from "react-router";
 import { throttle } from 'lodash'
 import { AppContext }  from '../../context'
-import { LocalState, onFormSubmition, isFormErrorFree } from './utils'
+import { LocalState, submit, isFormErrorFree } from './utils'
 
 
 class LogInForm extends React.Component<RouteComponentProps, LocalState> {
@@ -18,6 +17,7 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
     this.state = {
       email:  '', 
       password: '',
+      validationFailed: false,
       error: {
         email: false,
         password: false,
@@ -29,9 +29,10 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
     const { state } = this;
     e.preventDefault();
  
-
     if (!state.error.email && !state.error.password) {
-      onFormSubmition(this);
+      submit(this).catch(()=> {//@todo if 403 redirect
+        this.setState({validationFailed: true})
+      })
     } 
   }
 
@@ -105,7 +106,7 @@ class LogInForm extends React.Component<RouteComponentProps, LocalState> {
           onChangeHandler={this.updatePassword}
           required />
       </fieldset>
- 
+      <p className={ `errorMessage ${this.state.validationFailed ? '' : 'hide'}` }>Invalid credentials</p>
       <fieldset className="align-button-fieldset-center">
         <Button
           disabled={!this.state.error.isFormValid}
