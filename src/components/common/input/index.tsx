@@ -1,28 +1,15 @@
 
-import React from 'react';
-
-type InputPropsType= {
-  id: string,
-  type: string,
-  name: string
-  required?: boolean,
-  checked?: boolean
-  onChangeHandler: Function
-  className?: string,
-  label: string,
-  placeholder: string
-  error:boolean;
-  errorMessage:string
-}
+import React from 'react'
+import { InputPropsType } from './types'
 
 const Input = ({
   id,
   name,
-  type, 
+  type = '', 
   placeholder = '',
   onChangeHandler,
   checked,
-  className,
+  className = '',
   label,
   error = false, 
   errorMessage = '',
@@ -43,12 +30,4 @@ const Input = ({
     </React.Fragment>
   )
  
-Input.defaultProps = {
-  type: 'text', 
-  className: '',
-  placeholder: '',
-  errorMessage: '',
-  error: false
-}
-
 export default Input

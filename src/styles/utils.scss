@@ -5,7 +5,6 @@
   @return $map;
 }
   
-  
 @mixin theming($themes, $attrs) {
   @each $theme, $map in $themes {
     .#{$theme} & {
@@ -15,5 +14,12 @@
     }
   }
 }
-  
+
+@mixin mediaQuerySmall($attrs) {
+   @each $key, $value in $attrs {
+        @media  (max-width: 800px) {
+          #{$key}:$value;
+        }
+    }
+}  
   

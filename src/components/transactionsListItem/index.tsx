@@ -1,22 +1,19 @@
 
 import React from 'react';
-import { TransactionPayloadItemType } from '../../services/transactions/actions/types'
+import { TransactionsListItemType } from './types'
 
 const getDate = (date: string) => {
   const dateObj = new Date(date);
   return `${dateObj.getDay()}/${dateObj.getMonth()}/${dateObj.getFullYear()}`
 }
 
-interface TransactionsListItem extends TransactionPayloadItemType{
-  className?:string
-}
 const TransactionsListItem = ({
   date,
   amount,
   product,
   image,
   className = '',
-}: TransactionsListItem) => (
+}: TransactionsListItemType) => (
     <article className={`comp-transactionItem ${className}`}>
       <img alt={product} src={image}/>
       <div>

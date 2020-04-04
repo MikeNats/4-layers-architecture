@@ -4,7 +4,7 @@ import Input from '../common/input'
 import Select from '../common/select'
 import TransactionsListItem from '../../components/transactionsListItem'
 import { throttle } from 'lodash'
-import { TransactionPayloadItemType } from '../../services/transactions/actions/types'
+import { TransactionPayloadItemType } from '../trancations/actions/types'
 
 type LocalState = {
   activeListItems: Array<TransactionPayloadItemType>
@@ -61,6 +61,7 @@ class TransactionSearchList extends React.Component<PropsTypes, LocalState> {
               label="search"
               errorMessage=""
               placeholder="search"
+              error={false}
               onChangeHandler={this.searchItems}/>
           </fieldset>
           <fieldset> 

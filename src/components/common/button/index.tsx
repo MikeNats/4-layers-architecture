@@ -1,19 +1,11 @@
 import React from "react";
+import { PropsType } from './types'
 
-type propsType = {
-  className?: string,
-  children: string,
-  onClickHandler: Function
-  disabled?: boolean
-}
- 
 const Button = ({
   onClickHandler, 
   className, 
   ...props  
-  }: propsType) => {
-
-  return (
+  }: PropsType) =>(
     <button
       className={`comp-button ${className}`}    
       onClick={(
@@ -23,5 +15,5 @@ const Button = ({
       { props.children }
     </button>
   );
-}
+
 export default Button;

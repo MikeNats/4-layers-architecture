@@ -8,17 +8,17 @@ type PrivateRouteType = {
   path: string
   exact?: boolean
 }
-const PrivateRoute = ({ component: Component, ...props }: PrivateRouteType) => (
+const PrivateRoute = ({ component: Component}: PrivateRouteType) => (
   <AppContext.Consumer>
      {context => (
-        <Route {...props} render={props => (
+        <Route render={props => (
           context.authenticated ? (
-            <Component {...props} />
+            <Component context={context} {...props} />
             ) : (
             <Redirect to={PATHS.LOGIN}/>
             )
         )} />
      )}
-  </AppContext.Consumer>)
+  </AppContext.Consumer>);
 
-export default PrivateRoute
+export default  PrivateRoute

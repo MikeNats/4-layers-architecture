@@ -1,6 +1,7 @@
 enum PATHS{
   LOGIN = '/login',
-  HOME = '/home' 
+  HOME = '/home',
+  ERROR = '/error' 
 }
 
 export default PATHS 

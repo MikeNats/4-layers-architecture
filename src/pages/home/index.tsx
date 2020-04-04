@@ -2,10 +2,9 @@ import React from 'react';
 import Trancations from '../../components/trancations'
 
 export default ({
-  className=''}) => {
-  return (
+  className='',
+  ...props}) => (
     <main className={`base-layout ${className}`}>
-        <Trancations></Trancations>
+        <Trancations context={props.context}></Trancations>
     </main> 
-  );
-}
+  ); 

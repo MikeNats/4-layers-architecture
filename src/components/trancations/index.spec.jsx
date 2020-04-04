@@ -6,20 +6,22 @@ import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import configureStore from 'redux-mock-store';
 import TransactionSearchList  from '../transactionsSearchList'
-import { fetchtransactions } from '../../services/transactions/actions'
-jest.mock('../../services/transactions/actions');
+import fetch from '../../services'
+jest.mock('../../services');
+
+const context = {  
+  authenticated: false,
+  setAuth: function(userId) {this.userId = userId; this.authenticated = true},
+  userId: 234213,
+  config: {},
+  setConfig: function(config) {this.config = config},
+  theme: 'dark'
+}
 
 Enzyme.configure({ adapter: new Adapter() })
 
-const initialState = { transactions: {
-  payload:[],
-  isFetching: false,
-  didInvalidate: false,
-  errorCode: 0,}
-}
 const middlewares = [thunk], 
- 	mockStore = configureStore(middlewares),
-   store = mockStore(initialState);
+ 	mockStore = configureStore(middlewares);
  
    
   const initializedStored  = mockStore({ transactions: {
@@ -33,22 +35,19 @@ const middlewares = [thunk],
     errorCode: 0}
   })
 describe("Transactions", () => {
-  describe('component', () => {
-    fetchtransactions.mockImplementation(() => () => {});
+    fetch.mockImplementation(() => () => {});
     it('should invoke fetchtransactions on componentDidMount', () => {	
-      const component = shallow(<Transactions store={initializedStored} />);
+      const component = shallow(<Transactions context={context} store={initializedStored} />);
       expect(component).toMatchSnapshot();
     });
     it('should invoke fetchtransactions on componentDidMount', () => {	
-      const component = mount(<Transactions store={initializedStored} />).find(TransactionSearchList);
+      const component = mount(<Transactions context={context} store={initializedStored} />).find(TransactionSearchList);
       expect(component.length).toEqual(1);
     });
     it('should should render TransactionSearchList if props are initiazined', () => {	
-      fetchtransactions.mockImplementation(() => () => {});
+      fetch.mockImplementation(() => () => {});
 
-		  mount(<Transactions store={initializedStored} />).find(TransactionSearchList);
-      expect(fetchtransactions).toHaveBeenCalled()
+		  mount(<Transactions context={context} store={initializedStored} />).find(TransactionSearchList);
+      expect(fetch).toHaveBeenCalled()
   	});
-
-  });
 });

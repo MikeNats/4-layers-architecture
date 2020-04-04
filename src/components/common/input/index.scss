@@ -7,6 +7,9 @@ $comp-input-focus:(
 $comp-input-error:(
     border-color: errorBorderColor
 );
+$comp-input-small:(
+    width: 100%
+);
 
 .comp-input{
   border-style: solid;
@@ -19,4 +22,5 @@ $comp-input-error:(
   &.error{ 
     @include theming($themes, $comp-input-error);
   }
+  @include mediaQuerySmall($comp-input-small);
 }
