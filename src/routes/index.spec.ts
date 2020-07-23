@@ -1,10 +1,10 @@
-import LogIn from '../pages/login'
+import LogIn from '../containers/LogIn'
 import Routes from '.'
 import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import  { lazy } from 'react';
-const Home = lazy(() => import('../pages/home'));
+const Home = lazy(() => import('../containers/home'));
 
 Enzyme.configure({ adapter: new Adapter() })
 

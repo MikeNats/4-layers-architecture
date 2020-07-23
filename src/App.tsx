@@ -1,7 +1,7 @@
 import React from 'react'
 import routes from './routes'
 import { AppContext, initialAppContext, JsonStringType} from './context'
-import  fetch from './services'
+import  fetch from './service/fetch'
 import './App.scss';
 
 type PropType = {};
@@ -15,16 +15,16 @@ class App extends React.Component<PropType, StateType> {
       config: {}
     }
   }
-  componentDidMount() {
+  componentDidMount() { //error boundaries 
     fetch({
       url:'/config.json',
       method: 'get'
-    }).then((res: { data: JsonStringType}) => {
+    }).then((res: { data: JsonStringType}) => { //json validation
       this.setState({
         config: res.data
       }) 
     })
-  }
+  }//layout component
   
   render = () => {
     if (this.state.config) {

@@ -1,0 +1,21 @@
+$comp-button:(
+  color: secondaryBackgroundColor,
+  background-color: mainBackgroundColor
+);
+$comp-button-disabled:(
+  color:mainBackgroundColor,
+  background-color: secondaryBackgroundColor,
+);
+
+.comp-button{
+  border: none; 
+  display: block;
+  border-radius:3px;
+  padding: 10px 20px;
+  cursor: pointer;
+  @include theming($themes,$comp-button);
+  &:disabled{
+    cursor: not-allowed;
+    @include theming($themes,$comp-button-disabled);
+  }
+}

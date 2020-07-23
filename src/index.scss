@@ -2,8 +2,9 @@
 @import 'styles/base';
 @import 'styles/layouts'; 
 @import 'styles/themes/index';
-@import 'components/common/input';
-@import 'components/common/button';
-@import 'components/common/select';
-@import 'components/logInForm';
-@import 'components/transactionsListItem/';
+@import 'components/common/Input/Input';
+@import 'components/common/Button/Button';
+@import 'components/common/Select/Select';
+@import 'containers/LogInPage/LogInPage'; 
+@import 'components/Transactions/TransactionsListItem/TransactionsListItem';
+ 

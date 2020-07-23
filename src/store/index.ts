@@ -1,7 +1,7 @@
 import logger from 'redux-logger';
 import { applyMiddleware, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import { rootReducer } from '../reducers'
+import { rootReducer } from './reducers'
 const prodMiddlewates = [thunk]
 const devMiddlewates  = [logger, thunk]
 
