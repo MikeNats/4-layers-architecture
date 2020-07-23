@@ -1,13 +1,9 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { AppContext } from '../../context'
+import { PrivateRouteType } from './types'
 import PATHS from '../PATHS'
 
-type PrivateRouteType = {
-  component: React.ComponentType<any>
-  path: string
-  exact?: boolean
-}
 const PrivateRoute = ({ component: Component}: PrivateRouteType) => (
   <AppContext.Consumer>
      {context => (

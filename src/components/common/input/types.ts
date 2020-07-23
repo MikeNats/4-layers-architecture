@@ -1,4 +1,4 @@
-export type InputPropsType= {
+export type InputProps= {
   id: string,
   type: string,
   name: string
@@ -10,4 +10,4 @@ export type InputPropsType= {
   placeholder: string
   error:boolean;
   errorMessage:string
-}
+}   

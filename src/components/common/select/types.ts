@@ -1,4 +1,4 @@
-export type SelectPropsType= {
+export type SelectProps= {
   id: string,
   className?: string
   options: Array<{
