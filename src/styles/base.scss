@@ -11,17 +11,16 @@ body {
 
 fieldset{
   border: none;
-  padding: 10px;
+  padding: 0.7em;
   margin: 0;
 }
 
 input{
-  height: 44px;
+  height: 4em;
   border-radius: 3px;
-  line-height: 44px;
-  text-indent: 5px;
-  min-width: 200px;
+  text-indent: 1em;
 } 
+
 input:focus{
   outline: none;
 }
@@ -44,5 +43,5 @@ input:focus{
 .errorMessage{
   color: red;
   font-size: 10px;
-  margin: 5px 0 0 0;
+  margin: 1em 0 0 0;
 }

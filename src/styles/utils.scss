@@ -17,7 +17,7 @@
 
 @mixin mediaQuerySmall($attrs) {
    @each $key, $value in $attrs {
-        @media  (max-width: 800px) {
+        @media  (max-width: $media-query-small) {
           #{$key}:$value;
         }
     }
