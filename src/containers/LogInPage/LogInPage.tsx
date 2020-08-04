@@ -6,7 +6,7 @@ import { AppContext }  from '../../context'
 import LogInForm from '../../components/LogInForm/LogInForm'
 import { submit, isFormErrorFree } from './utils'
 import { LogInState} from './types';
-
+ 
 
 class LogInPage extends React.Component<RouteComponentProps, LogInState> {
   static contextType = AppContext;
@@ -17,12 +17,10 @@ class LogInPage extends React.Component<RouteComponentProps, LogInState> {
     this.state = {
       email:  '', 
       password: '',
-      authStatus: false,
-      error: {
-        email: false,
-        password: false,
-        isFormValid: false
-      },     
+      authFailed: false,
+      errorEmail:false,
+      errorPassword: false,
+      isFormValid: false      
     };
   }
   private submitForm = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -30,7 +28,7 @@ class LogInPage extends React.Component<RouteComponentProps, LogInState> {
     e.preventDefault();
  
     submit(state, this.context, this.props).catch(()=> {//@todo if 403 redirect
-      this.setState({authStatus: true})
+      this.setState({authFailed: true})
     })
   }
 
@@ -38,50 +36,43 @@ class LogInPage extends React.Component<RouteComponentProps, LogInState> {
     if (value){
       this.setState(state => ({ 
         email: value,
-        error: {
-          ...state.error,
-          isFormValid: isFormErrorFree(state.error, value, state.password, state.email),
-          email: false }}))
+        isFormValid: isFormErrorFree(state.errorEmail, state.errorPassword, value, state.password, state.email),
+        errorEmail: false }))
     } else {
       this.setState(state => ({ 
         email: value,
-        error: {
-          ...state.error,
-          isFormValid: false,
-          email: true }}))
+        isFormValid: false,
+        errorEmail: true }))
     }
   }, 500)
-
 
   private updatePassword = throttle(value => {
     if (value){
       this.setState(state => ({ 
         password: value,
-        error: {
-          ...state.error,
-          isFormValid: isFormErrorFree(state.error,state.email, value, state.password),
-          password: false }}))
+        isFormValid: isFormErrorFree(state.errorEmail, state.errorPassword,state.email, value, state.password),
+        errorPassword: false }))
     } else {
       this.setState(state => ({ 
         password: value,
-        error: {
-          ...state.error,
-          isFormValid: false,
-          password: true }}))       
-    }
+        isFormValid: false,
+        errorPassword: true }))       
+    } 
   }, 500)
-
+ 
   public render = () => ( 
     <main className="base-layout horiz-vertic-align-layout">  
       <LogInForm 
         submitForm={this.submitForm} 
         updateEmail={this.updateEmail}
         updatePassword={this.updatePassword}
-        authStatus={this.state.authStatus}
-        validationErrors={this.state.error}/>
+        authFailed={this.state.authFailed}
+        errorEmail={this.state.errorEmail}
+        errorPassword={this.state.errorPassword}
+        isFormValid={this.state.isFormValid}/>
     </main>
   )
 }
-
+ 
 
 export default withRouter(LogInPage)

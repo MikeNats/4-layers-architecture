@@ -6,7 +6,7 @@ import { Dispatch } from 'redux'
 import fetch from '../../service/fetch'
 import { AsyncActionNames } from '../../store/actions/types'
 import { HomePropsType, StateType, HomeState, SortingType } from './types'
-import TransactionSearchForm from '../../components/Transactions/TransactionsSearchList/TransactionsSearchForm'
+import TransactionSearchForm from '../../components/Transactions/TransactionsSearchForm/TransactionsSearchForm'
 import TransactionsListItem from '../../components/Transactions/TransactionsListItem/TransactionsListItem'
 import { Redirect} from "react-router";
 import PATHS from '../../routes/PATHS';
@@ -45,7 +45,7 @@ class Transactions extends React.Component <HomePropsType, HomeState> {
   private setSearchTerm = throttle(term => 
     this.setState({searchTerm: term}), 500)
  
-  private transactionSearchList(){
+  private transactions(){
     return (
       <main className={`base-layout`}>
         <section className="flex-grow-1">
@@ -57,7 +57,7 @@ class Transactions extends React.Component <HomePropsType, HomeState> {
           { this.sortAndFilter().map(item =>
               <TransactionsListItem 
                 key={item.product} 
-                className="flex-direction-row" {...item}/>) 
+                {...item}/>) 
           }   
         </section>
       </main>)
@@ -71,7 +71,7 @@ render() {
   if (this.props.errorCode) {
     return  this.redirectToErrorPage()
   }else if (this.props.transactions && this.props.transactions.length > 0) {
-    return this.transactionSearchList();
+    return this.transactions();
     }
       return null;
     }

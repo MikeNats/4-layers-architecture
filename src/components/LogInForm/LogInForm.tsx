@@ -5,8 +5,10 @@ import { Props } from './types'
 
 const LogInForm = ({
   submitForm,
-  authStatus,
-  validationErrors,
+  authFailed,
+  errorEmail,
+  errorPassword,
+  isFormValid,
   updateEmail,
   updatePassword
 }: Props) => (
@@ -20,7 +22,7 @@ const LogInForm = ({
         name="email" 
         id="email"
         label="user name:"
-        error={validationErrors.email}
+        error={errorEmail}
         errorMessage="Mandatory field"
         placeholder="email"
         onChangeHandler={updateEmail}
@@ -34,17 +36,17 @@ const LogInForm = ({
         id="password"
         label="password:"
         placeholder="password"
-        error={validationErrors.password}
+        error={errorPassword}
         errorMessage="Mandatory field"
         onChangeHandler={updatePassword}
         required />
     </fieldset>
 
-    <p className={ `errorMessage ${authStatus ? '' : 'hide'}` }>Invalid credentials</p>
+    <p className={ `errorMessage ${authFailed ? '' : 'hide'}` }>Invalid credentials</p>
     
     <fieldset className="align-button-fieldset-center">
       <Button
-        disabled={!validationErrors.isFormValid}>
+        disabled={!isFormValid}>
         submit</Button> 
     </fieldset>
 </form>)
