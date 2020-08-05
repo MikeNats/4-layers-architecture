@@ -1,5 +1,5 @@
 
-import { TransactionItemType } from '../../store/actions/transactions/types'
+import { TransactionItemType } from '../../models/transactions'
 import { SortingType } from './types'
 
 export const shortTransactions = (value: SortingType | null, transactions: Array<TransactionItemType>) => {

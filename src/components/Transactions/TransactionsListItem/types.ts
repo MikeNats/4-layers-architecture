@@ -1,6 +1,6 @@
 
-import { TransactionItemType } from '../../../store/actions/transactions/types'
+import { TransactionItemType } from '../../../models/transactions'
 
-export interface TransactionsListItemType extends TransactionItemType{
+export interface TransactionsListItemProps extends TransactionItemType{
     className?:string
 }   

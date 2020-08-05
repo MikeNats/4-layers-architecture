@@ -1,21 +1,14 @@
 import {
   ACTIONS_ENUM_TYPES,
   TransactionsActionTypes,
-  TransactionItemType
 } from "../../actions/transactions/types";
-
-export interface TransactionsStateType {
-  payload:TransactionItemType[]
-  isFetching: Boolean, 
-  didInvalidate: Boolean,
-  errorCode: Number
-} 
+import { TransactionsStateType } from './types';
 
 export const initialStoreState: TransactionsStateType =  {
   isFetching: false,
   didInvalidate: false,
   payload:[],//null
-  errorCode: 0
+  errorCode: 0  
 }
 
 export const transactions = (state: TransactionsStateType = initialStoreState, action: TransactionsActionTypes): TransactionsStateType  => {

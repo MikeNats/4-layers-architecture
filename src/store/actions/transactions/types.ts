@@ -1,15 +1,9 @@
 import { Action } from 'redux'
+import { TransactionItemType } from '../../../models/transactions'
 export enum ACTIONS_ENUM_TYPES{
   REQUEST_TRANSACTIONS = 'REQUEST_TRANSACTIONS',
   RECEIVE_TRANSACTIONS = 'RECEIVE_TRANSACTIONS',
   FAILED_TRANSACTIONS = 'FAILED_TRANSACTIONS'
-}
-
-export interface TransactionItemType{
-   date: string;
-   amount: number;
-   product: string;
-   image: string
 }
 
 export interface RequestTransactionsActionType extends Action{

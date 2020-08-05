@@ -1,5 +1,6 @@
 
-import { TransactionItemType } from '../../store/actions/transactions/types'
+import { TransactionItemType } from '../../models/transactions'
+import { TransactionsStateType } from '../../store/reducers/transactions/types'
 import { AppContextType }  from '../../context' 
 
 export enum SortingType{
@@ -8,7 +9,7 @@ export enum SortingType{
   "none" = "none"
 }
 
-export interface HomePropsType {
+export interface TransactionsProps {
   transactions:TransactionItemType[]
   isFetching: Boolean,
   didInvalidate: Boolean,
@@ -18,15 +19,10 @@ export interface HomePropsType {
 };
   
 export type StateType = {
-  transactions: {
-    payload:TransactionItemType[]
-    isFetching: Boolean,
-    didInvalidate: Boolean, 
-    errorCode: number
-  }
+  transactions: TransactionsStateType
 }  
 
-export type HomeState = {
+export type TransactionsLocalState = {
   short: SortingType | null,
   searchTerm: string
 }

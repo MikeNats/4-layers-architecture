@@ -4,10 +4,10 @@ export {  responseTransactions, requestTransactions }
 
 
 export const asyncActions: ActionsStatusType = {
-    'TRANSACTIONS': {
-      'REQUEST': requestTransactions,
-      'SUCCESS': responseTransactions, 
-      'FAIL': failGetTransactions
-    }
+  'TRANSACTIONS': {
+    'REQUEST': requestTransactions,
+    'SUCCESS': responseTransactions, 
+    'FAIL': failGetTransactions
   }
+}
    

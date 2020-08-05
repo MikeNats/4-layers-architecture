@@ -1,10 +1,10 @@
-import { 
-  TransactionItemType, 
+import {  
   RequestTransactionsActionType,
   ResponseTransactionsActionsType,
   FailGetTransactionsActionType,
   ACTIONS_ENUM_TYPES
 } from './types'; 
+import { TransactionItemType } from '../../../models/transactions'
 
 export const requestTransactions = (): RequestTransactionsActionType => ({
   type: ACTIONS_ENUM_TYPES.REQUEST_TRANSACTIONS

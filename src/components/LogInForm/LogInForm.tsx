@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../common/Input/Input'
 import Button from '../common/Button/Button'
-import { Props } from './types'
+import { LogInFormProps } from './types'
 
 const LogInForm = ({
   submitForm,
@@ -11,7 +11,7 @@ const LogInForm = ({
   isFormValid,
   updateEmail,
   updatePassword
-}: Props) => (
+}: LogInFormProps) => (
   <form 
     className="comp-logiInForm"
     onSubmit={submitForm}>

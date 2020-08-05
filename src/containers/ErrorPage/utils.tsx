@@ -1,7 +1,7 @@
 
 import { ErrorMessages } from './types';
 
-export const errorMessages: ErrorMessages = { //Text can be imported by cms by initial configuration call on app bootstrap
+export const errorMessages: ErrorMessages = { //Text can be imported by cms with initial configuration call on app bootstrap
     400: 'Bad Request',
     401: 'Unauthorize',
     403: 'Forbidden',

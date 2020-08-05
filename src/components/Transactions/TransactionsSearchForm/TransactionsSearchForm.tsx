@@ -2,16 +2,12 @@
 import React from 'react';
 import Input from '../../common/Input/Input'
 import Select from '../../common/Select/Select'
-
-type PropsTypes = {
-  searchItems: Function,
-  shortTransactions: Function
-}
-
+import { TransactionSearchFormProps } from './types'
+  
 const TransactionSearchForm = ({
   searchItems,
   shortTransactions
-}: PropsTypes) => ( 
+}: TransactionSearchFormProps) => ( 
   <form 
     className={`comp-TransactionSearchForm `}>
     <fieldset>

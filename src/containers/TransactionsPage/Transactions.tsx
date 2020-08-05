@@ -5,16 +5,17 @@ import { asyncActions } from '../../store/actions'
 import { Dispatch } from 'redux'
 import fetch from '../../service/fetch'
 import { AsyncActionNames } from '../../store/actions/types'
-import { HomePropsType, StateType, HomeState, SortingType } from './types'
+import { TransactionsProps, StateType, TransactionsLocalState, SortingType } from './types'
 import TransactionSearchForm from '../../components/Transactions/TransactionsSearchForm/TransactionsSearchForm'
-import TransactionsListItem from '../../components/Transactions/TransactionsListItem/TransactionsListItem'
+import TransactionsList from '../../components/Transactions/TransactionsList/TransactionsList';
+import { TransactionItemType } from '../../models/transactions'
 import { Redirect} from "react-router";
 import PATHS from '../../routes/PATHS';
 import { shortTransactions } from './utils'
+  
 
-
-class Transactions extends React.Component <HomePropsType, HomeState> {
-  constructor(props: HomePropsType) {
+class Transactions extends React.Component <TransactionsProps, TransactionsLocalState> {
+  constructor(props: TransactionsProps) {
     super(props);//componemt did update 
     this.state = {
       short: null ,
@@ -33,7 +34,7 @@ class Transactions extends React.Component <HomePropsType, HomeState> {
     }  
   }
 
-  private sortAndFilter(){
+  private sortAndFilter():TransactionItemType[] {
     return shortTransactions(this.state.short, this.state.searchTerm ? this.props.transactions.filter(item => 
       item.product.toLowerCase().includes(this.state.searchTerm)) : this.props.transactions)
   }
@@ -54,11 +55,8 @@ class Transactions extends React.Component <HomePropsType, HomeState> {
             searchItems={this.setSearchTerm}/>
         </section>
         <section className="flex-grow-6">
-          { this.sortAndFilter().map(item =>
-              <TransactionsListItem 
-                key={item.product} 
-                {...item}/>) 
-          }   
+          <TransactionsList 
+            transactionsList={this.sortAndFilter()}/>
         </section>
       </main>)
   }
@@ -86,7 +84,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 })
 
 const mapStateToProps = (state: StateType) => ({//lodash check object
-  transactions:state.transactions.payload,
+  transactions: state.transactions.payload,
   isFetching: state.transactions.isFetching,
   didInvalidate: state.transactions.didInvalidate,
   errorCode: state.transactions.errorCode,

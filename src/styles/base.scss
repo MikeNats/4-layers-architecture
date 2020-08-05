@@ -15,6 +15,12 @@ fieldset{
   margin: 0;
 }
 
+ul,li{
+  display: block;
+  margin:0;
+  padding: 0; 
+}
+
 input{
   height: 4em;
   border-radius: 3px;

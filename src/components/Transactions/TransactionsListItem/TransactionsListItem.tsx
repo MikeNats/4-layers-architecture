@@ -1,15 +1,15 @@
  
 import React from 'react';
-import { TransactionsListItemType } from './types'
+import { TransactionsListItemProps } from './types'
 import { getDate } from './utils'
  
 const TransactionsListItem = ({
   date,
   amount,
-  product, 
+  product,  
   image,
   className = '',
-}: TransactionsListItemType) => (
+}: TransactionsListItemProps) => (
     <article className={`comp-transactionItem ${className}`}>
       <img alt={product} src={image}/>
       <div>
@@ -17,7 +17,6 @@ const TransactionsListItem = ({
         <p><strong>Date:</strong>{getDate(date)}</p>
         <p><strong>Amount:</strong>${amount}</p>
       </div>
-    </article>
-)
+    </article>)
   
 export default TransactionsListItem 

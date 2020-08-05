@@ -1,7 +1,7 @@
 
 export type Submit = (event: React.FormEvent<HTMLFormElement>) => void
 
-export type Props = {
+export type LogInFormProps = {
   submitForm: Submit,
   authFailed: Boolean
   errorEmail: boolean,
