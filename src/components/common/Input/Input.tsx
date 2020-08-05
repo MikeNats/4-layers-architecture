@@ -24,8 +24,7 @@ const Input = ({
         placeholder={placeholder}
         onChange={(e:  React.ChangeEvent<HTMLInputElement>)=> 
           {e.persist(); onChangeHandler(e.currentTarget.value)}}
-        {...props}
-      />
+        {...props}/>
       <p className={`errorMessage hide ${error? 'show' : '' }`}>{errorMessage}</p>
     </React.Fragment>
   )

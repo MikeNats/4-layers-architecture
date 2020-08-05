@@ -15,12 +15,13 @@ $comp-input-small:(
   border-style: solid;
   border-width: 1px;
   @include theming($themes, $comp-input);
+  @include mediaQuerySmall($comp-input-small);
+
   &:focus{
-      @include theming($themes, $comp-input-focus);
-      outline: none; 
+    @include theming($themes, $comp-input-focus);
+    outline: none; 
   }
   &.error{ 
     @include theming($themes, $comp-input-error);
   }
-  @include mediaQuerySmall($comp-input-small);
 }

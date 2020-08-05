@@ -3,9 +3,14 @@ $Comp-logiInForm:(
   background-color: secondaryBackgroundColor,
 );
 
+$Comp-logiInForm-small:(
+  width: 90%
+);
+
 .comp-logiInForm{
   padding: 20px;
   border-radius: 5px;
   box-shadow: 1px 1px 6px -1px;
   @include theming($themes, $Comp-logiInForm);
+  @include mediaQuerySmall($Comp-logiInForm-small)
 }

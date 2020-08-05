@@ -1,4 +1,4 @@
-export type InputProps= {
+export type InputProps = {
   id: string,
   type: string,
   name: string

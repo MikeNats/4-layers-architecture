@@ -6,8 +6,8 @@ import { AuthResponse,  LogInState} from './types';
 let axiosDefaults = require('axios/lib/defaults');
 
 
-export const isFormErrorFree = (error: {email: boolean, password: boolean}, email: string, password: string, prevValue: string) =>
-  !!(!error.email && !error.password && (email || !prevValue) && (password || !prevValue))
+export const isFormErrorFree = (errorEmail: boolean, errorPassword: boolean, email: string, password: string, prevValue: string) =>
+  !!(!errorEmail && !errorPassword && (email || !prevValue) && (password || !prevValue))
 
 export const submit = (state: LogInState, context: AppContextType, props: RouteComponentProps) =>  
   fetch({
