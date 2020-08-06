@@ -2,9 +2,9 @@
 @import 'styles/base';
 @import 'styles/grid'; 
 @import 'styles/themes/index';
-@import 'components/common/Input/Input';
-@import 'components/common/Button/Button';
-@import 'components/common/Select/Select';
-@import 'containers/LogInPage/LogInPage'; 
-@import 'components/Transactions/TransactionsListItem/TransactionsListItem';
-  
+@import 'view/components/common/Input/Input';
+@import 'view/components/common/Button/Button';
+@import 'view/components/common/Select/Select';
+@import 'view/containers/LogInPage/LogInPage'; 
+@import 'view/components/Transactions/TransactionsListItem/TransactionsListItem';
+   
