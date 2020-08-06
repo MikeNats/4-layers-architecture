@@ -20,6 +20,6 @@
     "jsx": "react"
   },
   "include": [
-    "src", "src/components/common/Select/.spec.tsx"
+    "src", "src/view/components/common/Select/.spec.tsx"
   ]
 }

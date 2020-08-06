@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
-import LogInPage from '../containers/LogInPage/LogInPage';
-import ErrorPage from '../containers/ErrorPage/ErrorPage'; 
+import LogInPage from '../view/containers/LogInPage/LogInPage';
+import ErrorPage from '../view/containers/ErrorPage/ErrorPage'; 
 import PrivateRoute from  './protected'
 import PATHS from './PATHS' 
 
@@ -10,7 +10,7 @@ import {
   Redirect,
   HashRouter as Router,
 } from 'react-router-dom';
-const Transactions = lazy(() => import('../containers/TransactionsPage/Transactions'));
+const Transactions = lazy(() => import('../view/containers/TransactionsPage/Transactions'));
 
 
 export default () =>  ( 
