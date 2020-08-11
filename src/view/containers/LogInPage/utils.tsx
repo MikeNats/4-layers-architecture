@@ -1,28 +1,19 @@
 import PATHS from '../../../routes/PATHS'
 import fetch from '../../../service/fetch'
-import { AppContextType }  from '../../../context'
-import { RouteComponentProps } from "react-router";
-import { AuthResponse,  LogInState} from './types';
-let axiosDefaults = require('axios/lib/defaults');
+import {AsyncActions } from '../.././../store/types'
 
 
 export const isFormErrorFree = (errorEmail: boolean, errorPassword: boolean, email: string, password: string, prevValue: string) =>
   !!(!errorEmail && !errorPassword && (email || !prevValue) && (password || !prevValue))
 
-export const submit = (state: LogInState, context: AppContextType, props: RouteComponentProps) =>  
+export const auth = (email: string, password: string, actions: AsyncActions) =>  
   fetch({
     url: '/mock/auth',
     method: 'post',
     auth: {
-      username: state.email,
-      password: state.password
+      username: email,
+      password: password
     }
+  },{
+    asyncActionName: actions
   })
-  .then((response: AuthResponse) => 
-    onLogInSuccess(response, context, props)) 
-
-const onLogInSuccess = (response: AuthResponse, context: AppContextType, props: RouteComponentProps) => {
-  axiosDefaults.headers.common['X-CSRF-Token'] = response.data.csrfToken;
-  context.setAuth(response.data.userId);
-  props.history.push(PATHS.HOME)
-}

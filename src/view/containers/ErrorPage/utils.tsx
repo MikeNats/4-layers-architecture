@@ -6,7 +6,6 @@ export const errorMessages: ErrorMessages = { //Text can be imported by cms with
     401: 'Unauthorize',
     403: 'Forbidden',
     404: 'Not Found',
-    409: 'Conflict',
     500: 'Internal Server Error',
     504: 'Gateway Timeout'
   };

@@ -1,6 +1,6 @@
 enum PATHS{
   LOGIN = '/login',
-  HOME = '/home',
+  HOME = '/',
   ERROR = '/error' 
 }
 

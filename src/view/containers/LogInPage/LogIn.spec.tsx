@@ -8,7 +8,6 @@ import {
   HashRouter as Router
 } from 'react-router-dom';
 import fetch from '../../../service/fetch' 
-import {AppContext, initialAppContext } from '../../../context'
 
 jest.mock('../../service');
 

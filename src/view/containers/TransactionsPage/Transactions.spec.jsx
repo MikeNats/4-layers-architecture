@@ -9,15 +9,6 @@ import TransactionSearchForm  from '../../view/components/Transactions/Transacti
 import fetch from '../../../service/fetch'
 jest.mock('../../services');
 
-const context = {  
-  authenticated: false, 
-  setAuth: function(userId) {this.userId = userId; this.authenticated = true},
-  userId: 234213,
-  config: {},
-  setConfig: function(config) {this.config = config},
-  theme: 'dark'
-}
-
 Enzyme.configure({ adapter: new Adapter() })
 
 const middlewares = [thunk], 
@@ -37,17 +28,17 @@ const middlewares = [thunk],
 describe("Transactions", () => {
     fetch.mockImplementation(() => () => {});
     it('should invoke fetchtransactions on componentDidMount', () => {	
-      const component = shallow(<Transactions context={context} store={initializedStored} />);
+      const component = shallow(<Transactions  store={initializedStored} />);
       expect(component).toMatchSnapshot();
     });
     it('should invoke fetchtransactions on componentDidMount', () => {	
-      const component = mount(<Transactions context={context} store={initializedStored} />).find(TransactionSearchForm);
+      const component = mount(<Transactions  store={initializedStored} />).find(TransactionSearchForm);
       expect(component.length).toEqual(1);
     });
     it('should should render TransactionSearchForm if props are initiazined', () => {	
       fetch.mockImplementation(() => () => {});
 
-		  mount(<Transactions context={context} store={initializedStored} />).find(TransactionSearchForm);
+		  mount(<Transactions  store={initializedStored} />).find(TransactionSearchForm);
       expect(fetch).toHaveBeenCalled()
   	});
 });
