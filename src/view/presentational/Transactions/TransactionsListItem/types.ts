@@ -1,5 +1,5 @@
 
-import { TransactionItem } from '../../../../domain/transaction/model'
+import { TransactionItem } from '../../../../domain/transaction/entity'
 
 export interface TransactionsListItemProps extends TransactionItem{
     className?:string

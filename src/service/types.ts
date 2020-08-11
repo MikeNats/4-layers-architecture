@@ -1,4 +1,4 @@
-import { TransactionsAsyncActions } from '../store/transactions/actions/types'
+import { TransactionsAsyncActions } from '../store/state/transactions/actions/types'
 
 export type AsynActionsState = {
   'REQUEST': Function,

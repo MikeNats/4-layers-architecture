@@ -1,7 +1,7 @@
 
-import { TransactionItem } from '../../../domain/transaction/model'
+import { TransactionItem } from '../../../domain/transaction/entity'
 import { SORTING_METHODS } from '../../../domain/transaction/transactionServices'
-import { TransactionsReducer } from '../../../store/transactions/reducers/types'
+import { TransactionsReducer } from '../../../store/state/transactions/reducers/types'
 import { AsyncReducer } from '../../../store/types'
 
 export interface TransactionsProps extends AsyncReducer{

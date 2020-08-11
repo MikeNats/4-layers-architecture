@@ -1,5 +1,5 @@
 
-import { TransactionItem } from './model'
+import { TransactionItem } from './entity'
 
 export enum SORTING_METHODS{
   "A-Z" = "A-Z", 
@@ -19,3 +19,7 @@ export const shortTransactions = (value: SORTING_METHODS | null, transactions: A
 export const searchAndSort = (short: SORTING_METHODS | null, searchTerm: string, transactions: Array<TransactionItem>): Array<TransactionItem> => 
   shortTransactions(short, searchTerm ? transactions.filter(item => 
     item.product.toLowerCase().includes(searchTerm)) : transactions)
+
+export const searchOptions = [
+  {name:'a-z', value:"A-Z"}, 
+  {name:'z-a', value:"Z-A"}]

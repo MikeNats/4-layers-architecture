@@ -1,8 +1,8 @@
 
 import { validateIdenity } from '../../../domain/identity/identityServices'
 import fetch from '../../../service/fetch'
-import { identityActions } from '../../../store/identity/actions/identity'
-import { transactionsActions } from '../../../store/transactions/actions/transactions'
+import { identityActions } from '../../../store/state/identity/actions/identity'
+import { transactionsActions } from '../../../store/state/transactions/actions/transactions'
 
 
 export const fetchIdentity = () => fetch({

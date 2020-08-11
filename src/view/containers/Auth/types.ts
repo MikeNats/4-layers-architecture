@@ -1,7 +1,7 @@
 import { AsyncReducer } from '../../../store/types'
-import { Identity }  from '../../../domain/identity/model'
-import { FailGetIdentity } from '../../../store/identity/actions/types'
-import { LogInReducer } from '../../../store/auth/reducers/types'
+import { Identity }  from '../../../domain/identity/entity'
+import { FailGetIdentity } from '../../../store/state/identity/actions/types'
+import { LogInReducer } from '../../../store/state/auth/reducers/types'
 
 interface AuthPayload extends Identity{
   csrfToken: string

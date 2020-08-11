@@ -3,6 +3,7 @@ import React from 'react';
 import Input from '../../common/Input/Input'
 import Select from '../../common/Select/Select'
 import { TransactionSearchFormProps } from './types'
+import { searchOptions } from '../../../../domain/transaction/transactionServices'
   
 const TransactionSearchForm = ({
   searchItems,
@@ -24,9 +25,7 @@ const TransactionSearchForm = ({
     <fieldset> 
       <Select 
         id="sort" 
-        options={
-          [{name:'a-z', value:"A-Z"}, 
-          {name:'z-a', value:"Z-A"}]}
+        options={searchOptions}
         onChangeHandler={shortTransactions}>
       </Select>
     </fieldset>

@@ -1,4 +1,4 @@
-import { Identity } from './model'
+import { Identity } from './entity'
 import { isString, isNumber } from 'lodash'
 
 export const createIdenity = (): Identity => Object.freeze({

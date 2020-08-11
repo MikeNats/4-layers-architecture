@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { TransactionItem } from '../../../domain/transaction/model'
+import { TransactionItem } from '../../../../domain/transaction/entity'
 
  
 export enum TRANSACTIONS_ACTION_TYPES {

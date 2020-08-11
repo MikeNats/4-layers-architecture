@@ -3,14 +3,14 @@ import {
   IdentityAsyncActions,
 } from "../actions/types";
 import { IdentityReducer } from './types';
-import { createIdenity } from '../../../domain/identity/identityServices'
+import { createIdenity } from '../../../../domain/identity/identityServices'
 
 export const initIdenitytReduerState: IdentityReducer =  {
   isFetching: false,
   didInvalidate: false,
   payload: createIdenity(),
   errorCode: 0  
-} 
+}  
     
 export const identity = (state: IdentityReducer = initIdenitytReduerState, action: IdentityAsyncActions): IdentityReducer  => {
   switch (action.type) {

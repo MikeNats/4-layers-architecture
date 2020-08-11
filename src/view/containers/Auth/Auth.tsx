@@ -6,7 +6,7 @@ import { Dispatch } from 'redux'
 import LogInForm from '../../presentational/LogInForm/LogInForm'
 import { auth, logInFormValidation } from './utils'
 import { AuthState, AuthProps, AuthMapStateToProps } from './types';
-import { logInActions } from '../../../store/auth/actions/logIn'
+import { logInActions } from '../../../store/state/auth/actions/logIn'
 import { AsyncActions } from '../../../store/types'
 import { Redirect } from "react-router-dom";
 import PATHS from '../Routes/PATHS';
@@ -52,7 +52,7 @@ class Auth extends React.Component<AuthProps, AuthState> {
         invalidPassword: false }))
     } else {
       this.setState(() => ({ 
-        password: userInput,
+        password: userInput, 
         invalidFormValid: false,
         invalidPassword: true }))       
     } 

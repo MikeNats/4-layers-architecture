@@ -1,5 +1,5 @@
 import { Action } from 'redux'
-import { Identity } from '../../../domain/identity/model'
+import { Identity } from '../../../../domain/identity/entity'
 
  
 export enum IDENTITY_ACTION_TYPES {

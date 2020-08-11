@@ -1,6 +1,6 @@
 
-import { TransactionItem } from '../../../../domain/transaction/model'
-
+import { TransactionItem } from '../../../../domain/transaction/entity'
+ 
 export type TransactionsListPros = {
     transactionsList: TransactionItem[] 
 }

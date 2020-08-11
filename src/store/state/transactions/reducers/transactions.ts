@@ -10,13 +10,13 @@ export const initTransactionsReduerState: TransactionsReducer =  {
   payload:[],
   errorCode: null
 } 
-    
+     
 export const transactions = (state: TransactionsReducer = initTransactionsReduerState, action: TransactionsAsyncActions): TransactionsReducer  => {
   switch (action.type) {
     case TRANSACTIONS_ACTION_TYPES.REQUEST_TRANSACTIONS:
       return {
         ...state,
-        isFetching: true,
+        isFetching: true, 
         didInvalidate: false,
       }
     case TRANSACTIONS_ACTION_TYPES.RECEIVED_TRANSACTIONS:

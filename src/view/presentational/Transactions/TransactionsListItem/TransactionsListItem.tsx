@@ -2,7 +2,7 @@
 import React from 'react';
 import { TransactionsListItemProps } from './types'
 import { getDate } from './utils'
- 
+  
 const TransactionsListItem = ({
   date,
   amount,

@@ -1,12 +1,12 @@
 import React from 'react';
 import { throttle } from 'lodash'
 import { connect } from 'react-redux'
-import { ResponseIdentity } from '../../../store/identity/actions/types'
+import { ResponseIdentity } from '../../../store/state/identity/actions/types'
 import { Dispatch } from 'redux'
 import { TransactionsProps, StateType, TransactionsLocalState } from './types'
 import TransactionSearchForm from '../../presentational/Transactions/TransactionsSearchForm/TransactionsSearchForm'
 import TransactionsList from '../../presentational/Transactions/TransactionsList/TransactionsList';
-import { TransactionItem } from '../../../domain/transaction/model'
+import { TransactionItem } from '../../../domain/transaction/entity'
 import { SORTING_METHODS, searchAndSort } from '../../../domain/transaction/transactionServices';
 import { Redirect} from "react-router";
 import PATHS from '../Routes/PATHS';
@@ -20,7 +20,7 @@ class Transactions extends React.Component <TransactionsProps, TransactionsLocal
       short: null , 
       searchTerm: ''   
     };
-
+    
     this.searchAndSort = this.searchAndSort.bind(this)
     this.setSearchTerm = this.setSearchTerm.bind(this)
     this.setSort = this.setSort.bind(this)

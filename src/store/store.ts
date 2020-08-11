@@ -1,9 +1,9 @@
 import logger from 'redux-logger';
 import { combineReducers } from 'redux'
-import { transactions } from './transactions/reducers/transactions'
-import { identity } from './identity/reducers/identity'
-import { logInReducer } from './auth/reducers/auth'
-import { logInMiddleware } from './auth/middleware/logIn'
+import { transactions } from './state/transactions/reducers/transactions'
+import { identity } from './state/identity/reducers/identity'
+import { logInReducer } from './state/auth/reducers/auth'
+import { logInMiddleware } from './state/auth/middleware/logIn'
 
 
 import { applyMiddleware, createStore } from 'redux'
@@ -21,3 +21,4 @@ const rootReducer = combineReducers({
 });
 
 export const store = createStore(rootReducer, applyMiddleware(...middleware))    
+ 

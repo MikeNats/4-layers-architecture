@@ -1,11 +1,11 @@
-import { Identity } from '../../../domain/identity/model'
+import { Identity } from '../../../../domain/identity/entity'
 import {  
   RequestIdentity,
   ResponseIdentity,
   FailGetIdentity,
   IDENTITY_ACTION_TYPES
 } from './types'; 
-import { AsyncActions }from '../../types'
+import { AsyncActions }from '../../../types'
 
 
 export const identityActions: AsyncActions = {

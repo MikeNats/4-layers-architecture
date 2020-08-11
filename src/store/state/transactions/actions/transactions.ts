@@ -1,11 +1,11 @@
-import { TransactionItem } from '../../../domain/transaction/model'
+import { TransactionItem } from '../../../../domain/transaction/entity'
 import {  
   RequestTransactions,
   ResponseTransactions,
   FailGetTransactions,
   TRANSACTIONS_ACTION_TYPES
 } from './types'; 
-import { AsyncActions }from '../../types'
+import { AsyncActions }from '../../../types'
 
 
 export const transactionsActions: AsyncActions = {
