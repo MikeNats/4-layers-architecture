@@ -1,57 +1,50 @@
 import React from 'react';
 import { throttle } from 'lodash'
 import { connect } from 'react-redux'
-import { transactionsActions } from '../../../store/transactions/actions/transactions'
 import { ResponseIdentity } from '../../../store/identity/actions/types'
-
-import { identityActions } from '../../../store/identity/actions/identity'
-import { validateIdenity } from '../../../domain/identity/identityService'
 import { Dispatch } from 'redux'
-import fetch from '../../../service/fetch'
 import { TransactionsProps, StateType, TransactionsLocalState } from './types'
-import TransactionSearchForm from '../../components/Transactions/TransactionsSearchForm/TransactionsSearchForm'
-import TransactionsList from '../../components/Transactions/TransactionsList/TransactionsList';
+import TransactionSearchForm from '../../presentational/Transactions/TransactionsSearchForm/TransactionsSearchForm'
+import TransactionsList from '../../presentational/Transactions/TransactionsList/TransactionsList';
 import { TransactionItem } from '../../../domain/transaction/model'
-import { shortTransactions, SortingType } from '../../../domain/transaction/transactionService';
+import { SORTING_METHODS, searchAndSort } from '../../../domain/transaction/transactionServices';
 import { Redirect} from "react-router";
-import PATHS from '../../../routes/PATHS';
+import PATHS from '../Routes/PATHS';
+import { fetchIdentity, fetchTransactions} from './utils'
    
 
 class Transactions extends React.Component <TransactionsProps, TransactionsLocalState> {
   constructor(props: TransactionsProps) {
-    super(props);//componemt did update 
+    super(props); 
     this.state = {
       short: null , 
       searchTerm: ''   
     };
 
-    this.sortAndFilter = this.sortAndFilter.bind(this)
+    this.searchAndSort = this.searchAndSort.bind(this)
     this.setSearchTerm = this.setSearchTerm.bind(this)
     this.setSort = this.setSort.bind(this)
   }
  
   componentDidMount() {//component did update active page man mh kanei loading state not sucess not loop i9f error
-    const { fetchIdentity, fetchTransactions } = this.props;
-    if (!this.props.errorCode) {
-      fetchIdentity().then((res:ResponseIdentity) => {
-      return fetchTransactions('/mock/transactions', res.payload.id)})
-      
-    }  
+    const { requestIdentity, requestTransactions } = this.props;
+      requestIdentity()
+        .then((res:ResponseIdentity) => 
+          requestTransactions(res.payload.id))
   }
 
-  private sortAndFilter():TransactionItem[] {
-    return shortTransactions(this.state.short, this.state.searchTerm ? this.props.transactions.filter(item => 
-      item.product.toLowerCase().includes(this.state.searchTerm)) : this.props.transactions)
+  private searchAndSort():Array<TransactionItem>{
+    return searchAndSort(this.state.short, this.state.searchTerm, this.props.transactions)
   }
 
-  private setSort(short: SortingType){
+  private setSort(short: SORTING_METHODS): void{
     this.setState({short})
   }
 
-  private setSearchTerm = throttle(term => 
-    this.setState({searchTerm: term}), 500)
+  private setSearchTerm = throttle(userInput => 
+    this.setState({ searchTerm: userInput }), 500)
  
-  private transactions(){
+  private transactions(): JSX.Element{
     return (
       <main className={`base-layout`}>
         <section className="flex-grow-1">
@@ -61,11 +54,11 @@ class Transactions extends React.Component <TransactionsProps, TransactionsLocal
         </section>
         <section className="flex-grow-6">
           <TransactionsList 
-            transactionsList={this.sortAndFilter()}/>
+            transactionsList={this.searchAndSort()}/>
         </section>
       </main>)
   }
-  private redirectToErrorPage() {
+  private redirectToErrorPage(): JSX.Element {
     return <Redirect to={{ 
       pathname: PATHS.ERROR,
       state: { errorCode : this.props.errorCode}}}/>
@@ -81,19 +74,8 @@ class Transactions extends React.Component <TransactionsProps, TransactionsLocal
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchIdentity: () => fetch({
-    url: `mock/identity`,
-    method: 'GET',
-  }, {
-    asyncActionName: identityActions,
-    responseValidation: validateIdenity
-  })(dispatch),
-  fetchTransactions: (url: string, userId: number) => fetch({
-    url: `${url}/${userId}`,
-    method: 'GET',
-  }, {
-    asyncActionName: transactionsActions
-  })(dispatch)
+  requestIdentity: () => fetchIdentity()(dispatch),
+  requestTransactions: (userId: number) => fetchTransactions(userId)(dispatch)
 })
 
 const mapStateToProps = (state: StateType) => ({//lodash check object

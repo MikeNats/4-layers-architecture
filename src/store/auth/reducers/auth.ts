@@ -1,30 +1,30 @@
-import { AuthReducer } from './types'
-import { AUTH_ACTION_TYPE, AuthAsyncActions} from '../actions/types'
+import { LogInReducer } from './types'
+import { AUTH_ACTION_TYPES, AuthAsyncActions} from '../actions/types'
 
-export const initIdenitytReduerState: AuthReducer =  {
+export const initIdenitytReduerState: LogInReducer =  {
   isFetching: false,
   didInvalidate: false,
   authenticated: false,
   errorCode: null  
 } 
     
-export const authReducer = (state: AuthReducer = initIdenitytReduerState, action: AuthAsyncActions): AuthReducer  => {
+export const logInReducer = (state: LogInReducer = initIdenitytReduerState, action: AuthAsyncActions): LogInReducer  => {
   switch (action.type) {
-    case AUTH_ACTION_TYPE.REQUEST:
+    case AUTH_ACTION_TYPES.LOG_IN_REQUEST:
       return {
         errorCode: null,
         authenticated: false,
         isFetching: true,
         didInvalidate: false,
       }
-    case AUTH_ACTION_TYPE.SUCCESS:
+    case AUTH_ACTION_TYPES.LOG_IN_SUCCESS:
       return {
         isFetching: false,  
         didInvalidate: false,
         authenticated: true,
         errorCode: null 
       }
-    case AUTH_ACTION_TYPE.FAIL:
+    case AUTH_ACTION_TYPES.LOG_IN_FAIL:
       return {
         authenticated: false,
         isFetching: false,

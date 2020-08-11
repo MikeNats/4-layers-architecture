@@ -1,8 +1,8 @@
-import { AuthReducer } from '../store/auth/reducers/types'
+import { LogInReducer } from '../../../store/auth/reducers/types'
 
 export type RoutesProps = {
     authenticated: boolean
   }
 export type RoutesMapStateToProps = {
-  auth: AuthReducer
+  auth: LogInReducer
 }

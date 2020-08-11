@@ -1,5 +1,5 @@
 import { AsyncReducer } from '../../types'
 
-export interface AuthReducer extends AsyncReducer{
+export interface LogInReducer extends AsyncReducer{
   authenticated:boolean
 } 

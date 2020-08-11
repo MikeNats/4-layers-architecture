@@ -1,9 +1,9 @@
 import React from 'react';
 import { Redirect} from "react-router";
-import PATHS from '../../../routes/PATHS'
+import PATHS from '../../containers/Routes/PATHS'
 import { getErrorCode, message } from './utils';
 
-export default ({
+const ErrorView =  ({
   ...props
 }) => {
   const errorCode = getErrorCode(props);
@@ -19,3 +19,4 @@ export default ({
   } 
   return <Redirect to={PATHS.HOME}/>
 }
+export default ErrorView

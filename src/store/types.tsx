@@ -13,7 +13,7 @@ export type AsyncActions = {
   'FAIL': Function
 }
 
-export type AsyncFailActions = {
+export type AsyncFailAction = {
   type: string
   errorCode: number
 }

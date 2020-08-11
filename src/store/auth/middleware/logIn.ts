@@ -5,7 +5,7 @@ export const logInMiddleware: Middleware<Dispatch> = ({
   dispatch
   }: MiddlewareAPI) => next => (action: AnyAction) => {
 
-    // if (action.type === IDENTITY_ACTION_TYPES.RECEIVED_IDENTITY) {
+    // if (action.type === IDENTITY_ACTION_TYPES.IDENTITY_SUCCESS) {
     //   dispatch(logIn())
     // }
 

@@ -6,9 +6,9 @@ import { asyncErrorMessages } from '../../../service/utils'
 
 const LogInForm = ({
   submitForm,
-  errorEmail,
-  errorPassword,
-  isFormValid,
+  invalidEmail,
+  invalidPassword,
+  invalidFormValid,
   updateEmail,
   updatePassword,
   errorCode = null,
@@ -23,7 +23,7 @@ const LogInForm = ({
         name="email" 
         id="email"
         label="user name:"
-        error={errorEmail}
+        error={invalidEmail}
         errorMessage="Mandatory field"
         placeholder="email"
         onChangeHandler={updateEmail}
@@ -37,7 +37,7 @@ const LogInForm = ({
         id="password"
         label="password:"
         placeholder="password"
-        error={errorPassword}
+        error={invalidPassword}
         errorMessage="Mandatory field"
         onChangeHandler={updatePassword}
         required />
@@ -48,7 +48,7 @@ const LogInForm = ({
     
     <fieldset className="align-button-fieldset-center"> 
       <Button
-        disabled={!isFormValid}>
+        disabled={!invalidFormValid}>
         submit</Button> 
     </fieldset>
 </form>)

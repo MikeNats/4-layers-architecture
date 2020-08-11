@@ -2,7 +2,7 @@ import logger from 'redux-logger';
 import { combineReducers } from 'redux'
 import { transactions } from './transactions/reducers/transactions'
 import { identity } from './identity/reducers/identity'
-import { authReducer } from './auth/reducers/auth'
+import { logInReducer } from './auth/reducers/auth'
 import { logInMiddleware } from './auth/middleware/logIn'
 
 
@@ -17,7 +17,7 @@ let middleware =
 const rootReducer = combineReducers({
   transactions: transactions,
   identity: identity,
-  auth: authReducer
+  auth: logInReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(...middleware))    

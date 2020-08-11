@@ -3,7 +3,7 @@ import {
   IdentityAsyncActions,
 } from "../actions/types";
 import { IdentityReducer } from './types';
-import { createIdenity } from '../../../domain/identity/identityService'
+import { createIdenity } from '../../../domain/identity/identityServices'
 
 export const initIdenitytReduerState: IdentityReducer =  {
   isFetching: false,
@@ -20,7 +20,7 @@ export const identity = (state: IdentityReducer = initIdenitytReduerState, actio
         isFetching: true,
         didInvalidate: false,
       }
-    case IDENTITY_ACTION_TYPES.RECEIVED_IDENTITY:
+    case IDENTITY_ACTION_TYPES.IDENTITY_SUCCESS:
       return {
         ...state,
         isFetching: false,  
@@ -28,7 +28,7 @@ export const identity = (state: IdentityReducer = initIdenitytReduerState, actio
         payload:action.payload,
         errorCode: 0 
       }
-    case IDENTITY_ACTION_TYPES.FAILED_IDENTITY:
+    case IDENTITY_ACTION_TYPES.IDENTITY_FAIL:
       return {
         ...state,
         isFetching: false,

@@ -4,8 +4,8 @@ import { Identity } from '../../../domain/identity/model'
  
 export enum IDENTITY_ACTION_TYPES {
   REQUEST_IDENTITY= 'REQUEST_IDENTITY',
-  RECEIVED_IDENTITY= 'RECEIVED_IDENTITY',
-  FAILED_IDENTITY= 'FAILED_IDENTITY'
+  IDENTITY_SUCCESS= 'IDENTITY_SUCCESS',
+  IDENTITY_FAIL= 'IDENTITY_FAIL'
 }
 
 export interface RequestIdentity extends Action {
@@ -13,12 +13,12 @@ export interface RequestIdentity extends Action {
 }
 
 export interface ResponseIdentity extends Action {
-  type: IDENTITY_ACTION_TYPES.RECEIVED_IDENTITY,
+  type: IDENTITY_ACTION_TYPES.IDENTITY_SUCCESS,
   payload:Identity
 }
 
 export interface FailGetIdentity extends Action {
-  type: IDENTITY_ACTION_TYPES.FAILED_IDENTITY,
+  type: IDENTITY_ACTION_TYPES.IDENTITY_FAIL,
   errorCode: number
 }
 

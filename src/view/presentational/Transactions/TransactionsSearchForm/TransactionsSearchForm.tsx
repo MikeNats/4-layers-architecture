@@ -9,7 +9,7 @@ const TransactionSearchForm = ({
   shortTransactions
 }: TransactionSearchFormProps) => ( 
   <form 
-    className={`comp-TransactionSearchForm `}>
+    className={`comp-TransactionSearchForm`}>
     <fieldset>
       <Input  
         type="text" 

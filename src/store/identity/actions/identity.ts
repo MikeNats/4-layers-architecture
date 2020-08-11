@@ -13,11 +13,11 @@ export const identityActions: AsyncActions = {
     type: IDENTITY_ACTION_TYPES.REQUEST_IDENTITY
   }),
   'SUCCESS': (payload:Identity): ResponseIdentity => ({
-    type: IDENTITY_ACTION_TYPES.RECEIVED_IDENTITY,
+    type: IDENTITY_ACTION_TYPES.IDENTITY_SUCCESS,
     payload
   }), 
   'FAIL': (errorCode: number): FailGetIdentity => ({
-    type: IDENTITY_ACTION_TYPES.FAILED_IDENTITY,
+    type: IDENTITY_ACTION_TYPES.IDENTITY_FAIL,
     errorCode
   })
 }
