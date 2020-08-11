@@ -2,6 +2,10 @@ import React from 'react';
 import { throttle } from 'lodash'
 import { connect } from 'react-redux'
 import { transactionsActions } from '../../../store/transactions/actions/transactions'
+import { ResponseIdentity } from '../../../store/identity/actions/types'
+
+import { identityActions } from '../../../store/identity/actions/identity'
+import { validateIdenity } from '../../../domain/identity/identityService'
 import { Dispatch } from 'redux'
 import fetch from '../../../service/fetch'
 import { TransactionsProps, StateType, TransactionsLocalState } from './types'
@@ -25,11 +29,13 @@ class Transactions extends React.Component <TransactionsProps, TransactionsLocal
     this.setSearchTerm = this.setSearchTerm.bind(this)
     this.setSort = this.setSort.bind(this)
   }
-
+ 
   componentDidMount() {//component did update active page man mh kanei loading state not sucess not loop i9f error
-    const { fetchTransactions } = this.props;
+    const { fetchIdentity, fetchTransactions } = this.props;
     if (!this.props.errorCode) {
-      fetchTransactions('/mock/transactions', this.props.context.userId)
+      fetchIdentity().then((res:ResponseIdentity) => {
+      return fetchTransactions('/mock/transactions', res.payload.id)})
+      
     }  
   }
 
@@ -65,16 +71,23 @@ class Transactions extends React.Component <TransactionsProps, TransactionsLocal
       state: { errorCode : this.props.errorCode}}}/>
   }
   render() { 
-    if (this.props.errorCode) {
+    if (this.props.errorCode) { 
       return  this.redirectToErrorPage()
     } else if (this.props.transactions && this.props.transactions.length > 0) {
       return this.transactions();
     }
-    return null;
+    return null; 
   }
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
+  fetchIdentity: () => fetch({
+    url: `mock/identity`,
+    method: 'GET',
+  }, {
+    asyncActionName: identityActions,
+    responseValidation: validateIdenity
+  })(dispatch),
   fetchTransactions: (url: string, userId: number) => fetch({
     url: `${url}/${userId}`,
     method: 'GET',

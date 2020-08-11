@@ -2,15 +2,16 @@ import React from 'react'
 import Input from '../common/Input/Input'
 import Button from '../common/Button/Button'
 import { LogInFormProps } from './types'
+import { asyncErrorMessages } from '../../../service/utils'
 
 const LogInForm = ({
   submitForm,
-  authFailed,
   errorEmail,
   errorPassword,
   isFormValid,
   updateEmail,
-  updatePassword
+  updatePassword,
+  errorCode = null,
 }: LogInFormProps) => (
   <form 
     className="comp-logiInForm"
@@ -42,9 +43,10 @@ const LogInForm = ({
         required />
     </fieldset>
 
-    <p className={ `errorMessage ${authFailed ? '' : 'hide'}` }>Invalid credentials</p>
+    <p className={ `errorMessage ${errorCode ? '' : 'hide'}` }>
+      { errorCode ? asyncErrorMessages(errorCode) : 'Invalid credentials' }</p>
     
-    <fieldset className="align-button-fieldset-center">
+    <fieldset className="align-button-fieldset-center"> 
       <Button
         disabled={!isFormValid}>
         submit</Button> 

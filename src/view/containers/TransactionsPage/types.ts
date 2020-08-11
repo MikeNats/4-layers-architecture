@@ -2,13 +2,12 @@
 import { TransactionItem } from '../../../domain/transaction/model'
 import { SortingType } from '../../../domain/transaction/transactionService'
 import { TransactionsReducer } from '../../../store/transactions/reducers/types'
-import { AppContextType }  from '../../../context' 
 import { AsyncReducer } from '../../../store/types'
 
 export interface TransactionsProps extends AsyncReducer{
   transactions:TransactionItem[]
   fetchTransactions: Function,
-  context: AppContextType, 
+  fetchIdentity: Function
 };
 
 export type TransactionsLocalState = {

@@ -1,9 +1,10 @@
 import { TransactionsReducer } from './transactions/reducers/types';
+import { IdentityReducer } from './identity/reducers/types';
 
 export interface AsyncReducer {
   isFetching: Boolean, 
   didInvalidate: Boolean, 
-  errorCode: Number | null
+  errorCode: number | null
 } 
 
 export type AsyncActions = {
@@ -12,6 +13,13 @@ export type AsyncActions = {
   'FAIL': Function
 }
 
+export type AsyncFailActions = {
+  type: string
+  errorCode: number
+}
+
 export interface ApplicationState {
   transactions: TransactionsReducer
+  identity: IdentityReducer
+  auth: boolean
 }

@@ -1,34 +1,34 @@
 
 import React from 'react';
-import { withRouter, RouteComponentProps } from "react-router";
 import { throttle } from 'lodash'
-import { AppContext }  from '../../../context'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import LogInForm from '../../components/LogInForm/LogInForm'
-import { submit, isFormErrorFree } from './utils'
-import { LogInState} from './types';
+import { auth, isFormErrorFree } from './utils'
+import { LogInState, LoginProps, LogInMapStateToProps } from './types';
+import { authActions } from '../.././../store/auth/actions/auth'
+import { AsyncActions } from '../.././../store/types'
+import { Redirect } from "react-router-dom";
+import PATHS from '../../../routes/PATHS';
+class LogInPage extends React.Component<LoginProps, LogInState> {
  
-class LogInPage extends React.Component<RouteComponentProps, LogInState> {
-  static contextType = AppContext;
-
-  constructor(props: RouteComponentProps) {
+  constructor(props: LoginProps) {
     super(props);
     
     this.state = {
       email:  '', 
       password: '',
-      authFailed: false,
       errorEmail:false,
       errorPassword: false,
-      isFormValid: false      
+      isFormValid: false,
+      errorMessage: ''      
     };
-  }
+  } 
   private submitForm = (e: React.FormEvent<HTMLFormElement>): void => {
     const { state } = this;
     e.preventDefault();
  
-    submit(state, this.context, this.props).catch(()=> {//@todo if 403 redirect
-      this.setState({authFailed: true})
-    })
+    this.props.authenticate(state.email, state.password, authActions)
   }
 
   private updateEmail = throttle(value => {
@@ -39,7 +39,7 @@ class LogInPage extends React.Component<RouteComponentProps, LogInState> {
         errorEmail: false }))
     } else {
       this.setState(state => ({ 
-        email: value,
+        email: value, 
         isFormValid: false,
         errorEmail: true }))
     }
@@ -58,20 +58,36 @@ class LogInPage extends React.Component<RouteComponentProps, LogInState> {
         errorPassword: true }))       
     } 
   }, 500)
- 
+  
   public render = () => ( 
     <main className="base-layout horiz-vertic-align-layout">  
-      <LogInForm 
-        submitForm={this.submitForm} 
-        updateEmail={this.updateEmail}
-        updatePassword={this.updatePassword}
-        authFailed={this.state.authFailed}
-        errorEmail={this.state.errorEmail}
-        errorPassword={this.state.errorPassword}
-        isFormValid={this.state.isFormValid}/>
-    </main>
+      { !this.props.authenticated ? 
+          <LogInForm
+            errorCode={this.props.errorCode}  
+            submitForm={this.submitForm} 
+            updateEmail={this.updateEmail}
+            updatePassword={this.updatePassword}
+            errorEmail={this.state.errorEmail}
+            errorPassword={this.state.errorPassword}
+            isFormValid={this.state.isFormValid}/>
+          
+            : <Redirect to={ PATHS.HOME}/>
+        } 
+    </main> 
   )
 }
- 
 
-export default withRouter(LogInPage)
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  authenticate: (email: string, password: string, authActions: AsyncActions ) => 
+   auth(email, password, authActions)(dispatch)
+})
+
+
+const mapStateToProps = (state: LogInMapStateToProps) => ({//lodash check object
+  authenticated: state.auth.authenticated,
+  isFetching: state.auth.isFetching,
+  didInvalidate: state.auth.didInvalidate,
+  errorCode: state.auth.errorCode,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogInPage)
