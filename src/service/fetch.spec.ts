@@ -19,7 +19,7 @@ jest.mock('axios');
         axios.mockResolvedValue(Promise.resolve({data: []})) 
 
         fetch({ url: '/', method: 'get'}, {
-            asyncActionName: mockActions.mockAction
+            asyncActionNames: mockActions.mockAction
         })(mock.dispatch).then(() => {
           expect(mock.dispatch).toBeCalled();
           expect(mockActions.mockAction.REQUEST).toBeCalled();
@@ -33,7 +33,7 @@ jest.mock('axios');
         axios.mockResolvedValue(Promise.reject({errorCode: 500}))    
 
         fetch({ url: '/', method: 'get'}, {
-            asyncActionName: mockActions.mockAction
+            asyncActionNames: mockActions.mockAction
         })(mock.dispatch).then(() => {
           expect(mock.dispatch).toBeCalled();
           expect(mockActions.mockAction.REQUEST).toBeCalled();

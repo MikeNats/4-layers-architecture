@@ -5,9 +5,9 @@ import { isMock } from './utils'
 
 
 const asyncActionCreator = (dispatch: Dispatch<AsyncActions>, axiosRequestConfig: AxiosRequestConfig, requestConfig: RequestType) =>{ 
-  const { asyncActionName, actionArgs} = requestConfig;
+  const { asyncActionNames, actionArgs} = requestConfig;
 
-  dispatch(asyncActionName['REQUEST'](actionArgs));
+  dispatch(asyncActionNames['REQUEST'](actionArgs));
   
   return axios(isMock(axiosRequestConfig))
         .then(response => {
@@ -15,16 +15,16 @@ const asyncActionCreator = (dispatch: Dispatch<AsyncActions>, axiosRequestConfig
             requestConfig.responseValidation(response.data)
 
            if ((validPayload || !requestConfig.responseValidation)) {
-             return  dispatch(asyncActionName['SUCCESS'](response.data))
+             return  dispatch(asyncActionNames['SUCCESS'](response.data))
            }
-           return dispatch(asyncActionName['FAIL'](403))
+           return dispatch(asyncActionNames['FAIL'](403))
         })
         .catch(error => {
-          return dispatch(asyncActionName['FAIL'](error.response.status))})}
+          return dispatch(asyncActionNames['FAIL'](error.response.status))})}
 
 
 export default  (axiosRequestConfig: AxiosRequestConfig, requestConfig: RequestType = initRequestConfig): any => 
-  requestConfig && requestConfig.asyncActionName ?
+  requestConfig && requestConfig.asyncActionNames ?
     (dispatch: Dispatch<AsyncActions>): Promise<AsyncActions> =>  
       asyncActionCreator (dispatch,axiosRequestConfig, requestConfig) 
     : axios(isMock(axiosRequestConfig)) 

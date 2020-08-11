@@ -1,4 +1,4 @@
-import { TransactionsAsyncActions } from '../store/transactions/actions/types'
+import { TransactionsAsyncActions } from '../store/state/transactions/actions/types'
 
 export type AsynActionsState = {
   'REQUEST': Function,
@@ -8,14 +8,14 @@ export type AsynActionsState = {
 
  
 export type RequestType = {
-  asyncActionName: AsynActionsState,
+  asyncActionNames: AsynActionsState,
   actionArgs?: Array<any>,
   responseValidation?: Function
 } 
 
 
 export  const initRequestConfig = {
-  asyncActionName: {
+  asyncActionNames: {
     'REQUEST': (...args: Array<any>) => null,
     'SUCCESS': (...args: Array<any>) => null,
     'FAIL': (...args: Array<any>) => null,
