@@ -14,13 +14,13 @@ const asyncActionCreator = (dispatch: Dispatch<AsyncActions>, axiosRequestConfig
           const validPayload = requestConfig.responseValidation && 
             requestConfig.responseValidation(response.data)
 
-           if ((validPayload || !requestConfig.responseValidation)) {
-             return  dispatch(asyncActionNames['SUCCESS'](response.data))
-           }
-           return dispatch(asyncActionNames['FAIL'](403))
+            if ((validPayload || !requestConfig.responseValidation)) {
+              return  dispatch(asyncActionNames['SUCCESS'](response.data))
+            }
+            dispatch(asyncActionNames['FAIL'](403))
         })
         .catch(error => {
-          return dispatch(asyncActionNames['FAIL'](error.response.status))})}
+          return dispatch(asyncActionNames['FAIL']((error.response || {status: 'unknows'}.status)))})}
 
 
 export default  (axiosRequestConfig: AxiosRequestConfig, requestConfig: RequestType = initRequestConfig): any => 

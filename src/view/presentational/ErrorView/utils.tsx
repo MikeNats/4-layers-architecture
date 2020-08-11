@@ -10,7 +10,7 @@ export const errorMessages: ErrorMessages = { //Text can be imported by cms with
     504: 'Gateway Timeout'
   };
   
-export  const getErrorCode = (props: any) => props.location && props.location.state && props.location.state.errorCode;
+export  const getErrorCode = (props: any) => ((props.location && props.location.state && props.location.state.errorCode)|| props.errorCode);
   
 export const message = (errorCode: number) => errorMessages[errorCode] ||  "Somthing went wrong"
   

@@ -58,9 +58,12 @@ class Auth extends React.Component<AuthProps, AuthState> {
     } 
   }, 500)
   
-  public render = () => ( 
+  public render = () => {
+    return ( 
     <main className="base-layout horiz-vertic-align-layout">  
-      { !this.props.authenticated ? 
+      { 
+      
+      !this.props.authenticated ? 
           <LogInForm
             errorCode={this.props.errorCode}  
             submitForm={this.submitForm} 
@@ -73,7 +76,7 @@ class Auth extends React.Component<AuthProps, AuthState> {
             : <Redirect to={ PATHS.HOME}/>
         } 
     </main> 
-  )
+  )}
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

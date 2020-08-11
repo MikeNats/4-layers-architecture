@@ -15,17 +15,18 @@ const Transactions = lazy(() => import('../Transactions/Transactions'));
 
 export class Routes extends React.Component<RoutesProps, {}>{
 
-  render(){
-    return (<Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <Route exact path={PATHS.LOGIN} component={Auth} /> 
-          <PrivateRoute exact={true} path="/" auth={this.props.authenticated} component={Transactions} />
-          <Route exact={true} path={PATHS.ERROR} component={ErrorView}/> 
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
-  </Router>)
+  render() {
+    return (
+      <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route exact path={PATHS.LOGIN} component={Auth} /> 
+            <PrivateRoute exact={true} path="/" auth={this.props.authenticated} component={Transactions} />
+            <Route exact={true} path={PATHS.ERROR} component={ErrorView}/> 
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
+    </Router>)
   }
 }
 

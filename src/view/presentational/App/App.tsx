@@ -1,10 +1,13 @@
 import React from 'react'
 import Routes from '../../containers/Routes/Routes'
+import ErrorBoundary from '../../presentational/ErrorBoundary/ErrorBoundary'
 import './App.scss'; 
 
 const App = () => 
   <section className={`app dark`}>
-    <Routes />
+    <ErrorBoundary>
+      <Routes />
+    </ErrorBoundary>
   </section> 
 
 export default App    
