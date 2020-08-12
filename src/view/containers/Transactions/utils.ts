@@ -3,10 +3,10 @@ import { validateIdenity } from '../../../domain/identity/identityServices'
 import fetch from '../../../service/fetch'
 import { identityActions } from '../../../store/state/identity/actions/identity'
 import { transactionsActions } from '../../../store/state/transactions/actions/transactions'
-
+import { getEnvVar, API } from '../../../utils'
 
 export const fetchIdentity = () => fetch({
-  url: `mock/identity`,
+  url: process.env[getEnvVar(process.env.NODE_ENV, API.IDENTITY_URL)],
   method: 'GET',
   }, {
     asyncActionNames: identityActions,
@@ -14,10 +14,8 @@ export const fetchIdentity = () => fetch({
 })
 
 export const fetchTransactions = (userId: number) => fetch({
-  url: `/mock/transactions/${userId}`,
+  url:`${process.env[getEnvVar(process.env.NODE_ENV, API.TRANSACTIONS_URL)]}/${userId}`,
     method: 'GET',
   }, {
     asyncActionNames: transactionsActions
 });
-
-

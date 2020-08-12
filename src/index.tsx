@@ -5,9 +5,7 @@ import { Provider } from 'react-redux'
 import { store } from "./store/store"
 import './styles/index.scss';
 
-//@todo initial configuration and paths
-//@todo exeption handling -m errorboundaries
-//@todo loader and exeption handling -m errorboundaries
+//@todo loader
 //@todo BDDS
 //@todo unit tests
 //@todo webpack config

@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import Auth from '../Auth/Auth'
 import ErrorView from '../../presentational/ErrorView/ErrorView'; 
 import PrivateRoute from  '../../presentational/common/PrivateRoute/PrivateRoute'
-import PATHS from './PATHS' 
+import { PATHS } from '../../../utils' 
 import {connect} from 'react-redux';
 import { RoutesProps, RoutesMapStateToProps } from './types'
 import {
