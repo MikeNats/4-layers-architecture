@@ -9,7 +9,7 @@ import TransactionsList from '../../presentational/Transactions/TransactionsList
 import { TransactionItem } from '../../../domain/transaction/entity'
 import { SORTING_METHODS, searchAndSort } from '../../../domain/transaction/transactionServices';
 import { Redirect} from "react-router";
-import PATHS from '../Routes/PATHS';
+import { PATHS } from '../../../utils';
 import { fetchIdentity, fetchTransactions} from './utils'
    
 

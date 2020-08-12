@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect} from "react-router";
-import PATHS from '../../containers/Routes/PATHS'
+import { PATHS } from '../../../utils'
 import { getErrorCode, message } from './utils';
 
 const ErrorView =  ({
