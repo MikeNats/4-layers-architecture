@@ -2,9 +2,10 @@
 @import './base';
 @import './grid'; 
 @import './themes/index';
-@import '../view/presentational/common/Input/Input';
-@import '../view/presentational/common/Button/Button';
-@import '../view/presentational/common/Select/Select';
-@import '../view/containers/Auth/Auth'; 
-@import '../view/presentational/Transactions/TransactionsListItem/TransactionsListItem';
+@import '../view/components/common/Input/Input';
+@import '../view/components/common/Button/Button';
+@import '../view/components/common/Select/Select';
+@import '../view/pages/Auth/Auth'; 
+@import '../view/components/Transactions/TransactionsListItem/TransactionsListItem';
+@import '../view/components/ThemeToggler/ThemeToggler'
    

@@ -11,3 +11,8 @@ export enum PATHS{
   HOME = '/',
   ERROR = '/error' 
 }
+
+export enum THEMES {
+  DARK = 'dark',
+  LIGHT = 'light'
+}

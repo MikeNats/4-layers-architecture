@@ -1,5 +1,6 @@
 import { TransactionsReducer } from './state/transactions/reducers/types';
 import { IdentityReducer } from './state/identity/reducers/types';
+import { LogInReducer } from './state/auth/reducers/types';
 
 export interface AsyncReducer {
   isFetching: Boolean, 
@@ -21,5 +22,7 @@ export type AsyncFailAction = {
 export interface ApplicationState {
   transactions: TransactionsReducer
   identity: IdentityReducer
-  auth: boolean
+  auth: LogInReducer,
+  theme: string
+  
 }
