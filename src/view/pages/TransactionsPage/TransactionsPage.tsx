@@ -10,11 +10,11 @@ import TransactionsList from '../../components/Transactions/TransactionsList/Tra
 import { TransactionItem } from '../../../domain/transaction/entity'
 import { SORTING_METHODS, searchAndSort } from '../../../domain/transaction/transactionServices';
 import { Redirect} from "react-router";
-import { PATHS } from '../../../utils';
+import { PATHS } from '../../../enums';
 import { fetchIdentity, fetchTransactions} from './utils'
    
 
-class Transactions extends React.Component <TransactionsProps, TransactionsLocalState> {
+class TransactionsPage extends React.Component <TransactionsProps, TransactionsLocalState> {
   constructor(props: TransactionsProps) {
     super(props); 
     this.state = {
@@ -86,4 +86,4 @@ const mapStateToProps = (state: ApplicationState) => ({//lodash check object
   errorCode: state.transactions.errorCode,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Transactions);
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionsPage);

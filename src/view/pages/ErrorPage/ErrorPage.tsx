@@ -1,7 +1,7 @@
-import React from 'react';
-import { Redirect} from "react-router";
-import { PATHS } from '../../../utils'
-import { getErrorCode, message } from './utils';
+import React from 'react'
+import { Redirect} from "react-router"
+import { PATHS } from '../../../enums'
+import { getErrorCode, message } from './utils'
 
 const ErrorView =  ({
   ...props

@@ -1,5 +1,5 @@
 import React from 'react'
-import App from './Theme'
+import App from './ThemeToggler'
 import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 

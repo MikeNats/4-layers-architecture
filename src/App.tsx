@@ -1,19 +1,20 @@
 import React from 'react'
-import Routes from '../Routes/Routes'
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
+import Routes from './view/components/Routes/Routes'
 import {connect} from 'react-redux';
-import { ApplicationState } from '../../../store/types'
-import './App.scss'; 
-import { AppProps } from './types'
+import { ApplicationState } from './store/types'
+import { THEMES } from './enums' 
+
+type AppProps = {
+  authenticated: boolean
+  theme: string
+}
 
 class App extends React.PureComponent<AppProps> {
 
  render() {
    return (
-    <section className={`app ${this.props.theme}`}>
-      <ErrorBoundary>
+    <section className={`app ${this.props.theme || THEMES.LIGHT }`}>
         <Routes authenticated={this.props.authenticated}/>
-      </ErrorBoundary>
     </section> 
    )
  }

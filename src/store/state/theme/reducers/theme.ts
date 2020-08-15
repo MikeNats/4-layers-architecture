@@ -1,6 +1,6 @@
 
 import { THEME_ACTION_TYPES, ThemeActionTypes } from '../actions/types'
-import { THEMES } from '../../../../utils'
+import { THEMES } from '../../../../enums'
 
 
 const initialTheme = localStorage.getItem('theme') || THEMES.DARK
