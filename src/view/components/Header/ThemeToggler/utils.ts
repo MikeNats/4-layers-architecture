@@ -1,5 +1,5 @@
-import { THEMES } from '../../../enums'
-import { Options }  from '../common/Select/types'
+import { THEMES } from '../../../../enums'
+import { Options }  from '../../common/Select/types'
 
 const options: Options = [
   { name:THEMES.LIGHT, value:THEMES.LIGHT }, 

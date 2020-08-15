@@ -12,6 +12,7 @@ import { SORTING_METHODS, searchAndSort } from '../../../domain/transaction/tran
 import { Redirect} from "react-router";
 import { PATHS } from '../../../enums';
 import { fetchIdentity, fetchTransactions} from './utils'
+import { TowColumnsLayout } from '../../components/Layouts'
    
 
 class TransactionsPage extends React.Component <TransactionsProps, TransactionsLocalState> {
@@ -45,19 +46,21 @@ class TransactionsPage extends React.Component <TransactionsProps, TransactionsL
   private setSearchTerm = throttle(userInput => 
     this.setState({ searchTerm: userInput }), 500)
  
-  private transactions(): JSX.Element{
-    return (
-      <main className={`base-layout`}>
-        <section className="flex-grow-1">
-          <TransactionSearchForm 
-            shortTransactions={this.setSort}
-            searchItems={this.setSearchTerm}/>
-        </section>
-        <section className="flex-grow-6">
-          <TransactionsList 
+  private transactions(): JSX.Element {
+    return ( 
+    <TowColumnsLayout 
+      className={'base-layout'}
+      col_1={'flex-grow-1'}
+      children_col_1={[
+        <TransactionSearchForm 
+          shortTransactions={this.setSort}
+          searchItems={this.setSearchTerm}/>
+      ]}
+      col_2={'flex-grow-6'}
+      children_col_2={[
+        <TransactionsList 
             transactionsList={this.searchAndSort()}/>
-        </section>
-      </main>)
+      ]}/>)
   }
   private redirectToErrorPage(): JSX.Element {
     return <Redirect to={{ 
