@@ -1,8 +1,9 @@
 import { getEnvVar } from './getEnviromentVariable'
-import { API, PATHS } from './enums'
+import { API, PATHS, THEMES } from './enums'
 
 export {
   getEnvVar,
   API,
-  PATHS
+  PATHS,
+  THEMES
 }
