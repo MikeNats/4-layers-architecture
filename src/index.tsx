@@ -6,7 +6,6 @@ import { store } from './store/store'
 import ErrorBoundary from './view/components/ErrorBoundary/ErrorBoundary'
 import './styles/index.scss'
 
-//@todo base components & layouts
 //@todo unit tests
 
 ReactDOM.render(

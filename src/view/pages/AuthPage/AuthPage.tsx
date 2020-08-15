@@ -11,6 +11,7 @@ import { logInActions } from '../../../store/state/auth/actions/logIn'
 import { AsyncActions } from '../../../store/types'
 import { Redirect } from "react-router-dom"
 import { PATHS } from '../../../enums'
+import { OneColumnLayout } from '../../components/Layouts/'
 class AuthPage extends React.Component<AuthProps, AuthState> {
  
   constructor(props: AuthProps) { 
@@ -61,22 +62,20 @@ class AuthPage extends React.Component<AuthProps, AuthState> {
   
   public render = () => {
     return ( 
-    <main className="base-layout horiz-vertic-align-layout">  
-      { 
-      
-      !this.props.authenticated ? 
-          <LogInForm
-            errorCode={this.props.errorCode}  
-            submitForm={this.submitForm} 
-            updateEmail={this.updateEmail}
-            updatePassword={this.updatePassword}
-            invalidEmail={this.state.invalidEmail}
-            invalidPassword={this.state.invalidPassword}
-            invalidFormValid={this.state.invalidFormValid}/>
-          
-            : <Redirect to={ PATHS.HOME}/>
+      <OneColumnLayout className={'horiz-vertic-align-layout'}>
+        { !this.props.authenticated ? 
+            <LogInForm
+              errorCode={this.props.errorCode}  
+              submitForm={this.submitForm} 
+              updateEmail={this.updateEmail}
+              updatePassword={this.updatePassword}
+              invalidEmail={this.state.invalidEmail}
+              invalidPassword={this.state.invalidPassword}
+              invalidFormValid={this.state.invalidFormValid}/>
+            
+          : <Redirect to={ PATHS.HOME}/>
         } 
-    </main> 
+      </OneColumnLayout>
   )}
 }
 

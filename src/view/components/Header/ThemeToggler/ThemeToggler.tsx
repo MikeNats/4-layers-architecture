@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import { Dispatch } from 'redux'
-import Select from '../common/Select/Select'
-import { setTheme} from '../../../store/state/theme/actions/theme'
-import { ApplicationState } from '../../../store/types'
+import Select from '../../common/Select/Select'
+import { setTheme} from '../../../../store/state/theme/actions/theme'
+import { ApplicationState } from '../../../../store/types'
 import { ThemeProps } from './types'
 import { setSelectedTheme } from './utils'
 

@@ -1,6 +1,6 @@
 import React from "react"; 
 import { HeaderProps } from './types'
-import ThemeToggler from '../ThemeToggler/ThemeToggler';
+import ThemeToggler from './ThemeToggler/ThemeToggler';
 
 const Header = ({
     className = '',
