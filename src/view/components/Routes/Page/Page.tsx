@@ -1,8 +1,8 @@
 import React from "react"; 
 import { PageProps } from './types'
 import { Route, Redirect } from 'react-router-dom'
-import { PATHS } from '../../../utils'
-import Header from '../Header/Header'
+import { PATHS } from '../../../../enums'
+import Header from '../../Header/Header'
 
 export const pageStructure = (hasHeaderFooter: boolean, Component: React.ComponentType<any>, props:any) => 
   hasHeaderFooter ?

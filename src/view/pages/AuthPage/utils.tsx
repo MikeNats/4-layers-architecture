@@ -1,6 +1,7 @@
-import { getEnvVar, API } from '../../../utils'
+import { getEnvVar } from '../../../utils'
 import fetch from '../../../service/fetch'
 import {AsyncActions } from '../../../store/types'
+import { API } from '../../../enums'
 
 
 export const logInFormValidation = (invalidEmail: boolean, invalidPassword: boolean, email: string, password: string, prevValue: string) =>
@@ -17,4 +18,4 @@ export const auth = (email: string, password: string, actions: AsyncActions) =>
   },{
     asyncActionNames: actions
   }) 
-  
+

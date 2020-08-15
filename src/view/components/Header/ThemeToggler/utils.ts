@@ -1,4 +1,4 @@
-import { THEMES } from '../../../utils'
+import { THEMES } from '../../../enums'
 import { Options }  from '../common/Select/types'
 
 const options: Options = [

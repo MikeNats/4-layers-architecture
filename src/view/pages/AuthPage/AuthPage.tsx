@@ -1,17 +1,17 @@
 
-import React from 'react';
+import React from 'react'
 import { throttle } from 'lodash'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import LogInForm from '../../components/LogInForm/LogInForm'
 import { auth, logInFormValidation } from './utils'
-import { AuthState, AuthProps } from './types';
+import { AuthState, AuthProps } from './types'
 import { ApplicationState } from '../../../store/types'
 import { logInActions } from '../../../store/state/auth/actions/logIn'
 import { AsyncActions } from '../../../store/types'
-import { Redirect } from "react-router-dom";
-import { PATHS } from '../../../utils';
-class Auth extends React.Component<AuthProps, AuthState> {
+import { Redirect } from "react-router-dom"
+import { PATHS } from '../../../enums'
+class AuthPage extends React.Component<AuthProps, AuthState> {
  
   constructor(props: AuthProps) { 
     super(props);
@@ -93,4 +93,4 @@ const mapStateToProps = (state: ApplicationState) => ({//lodash check object
   errorCode: state.auth.errorCode,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthPage)

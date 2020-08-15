@@ -45,7 +45,6 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/register": "^7.10.5",
-    "@rpii/wdio-html-reporter": "^6.0.7",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -64,7 +63,6 @@
     "@wdio/cucumber-framework": "^6.0.8",
     "@wdio/local-runner": "^6.4.0",
     "@wdio/mocha-framework": "^6.4.0",
-    "@wdio/reporter": "^6.3.6",
     "@wdio/selenium-standalone-service": "^6.0.8",
     "@wdio/spec-reporter": "^6.4.0",
     "@wdio/static-server-service": "^6.0.8",

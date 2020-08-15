@@ -1,6 +1,6 @@
 import React, { ErrorInfo} from 'react'
 import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
-import ErrorView from '../../pages/ErrorView/ErrorView'
+import ErrorView from '../../pages/ErrorPage/ErrorPage'
 import fetch from '../../../service/fetch'
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
@@ -13,14 +13,14 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     }
   
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-      return fetch({
+      return this.props.reportError ? fetch({
         method: 'POST',
         url: 'mock/report-error',
         data: { 
           error,
           errorInfo
         }
-      })
+      }) : null
     }
   
     render() {
