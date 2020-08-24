@@ -1,3 +1,5 @@
+# 4 layer acrhitecture with React Redux
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 This is a React project that embraces the 4 layer architecture.
