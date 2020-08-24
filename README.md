@@ -1,5 +1,29 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+This is a React project that embraces the 4 layer architecture.
+Using this type of architecture you are:
+Decoupling bussines logic from the framework of your choise. 
+Utalising immutable architecture
+Easy to navigate 
+
+
+Layers: 
+
+1) Domain:
+Encaplulation of bussiness logic, side-effect free.
+As we are dealing with immutable architecture, our domain layer will consist of entities.
+The domain describes the state and holds the business logic. It represents the core of our application and should be agnostic to the view layer. We should be able to use our domain regardless of the framework we choose.
+3) Store:
+Holds state that is immutable, act as a publisher
+notifies Subscribers about state change. Holds actions and reducers
+3) Service:
+Enorchistration of external operations
+4) View:
+Presentational and Container components
+Angular, React, Vue ...
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
