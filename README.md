@@ -14,9 +14,6 @@ Easy to navigate
 
 
 
-Description:
-
-
 
 
 Layers: 
