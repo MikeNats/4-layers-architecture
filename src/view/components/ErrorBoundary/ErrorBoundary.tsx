@@ -12,6 +12,8 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       return { hasError: true };
     }
   
+
+    
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
       return this.props.reportError ? fetch({
         method: 'POST',
