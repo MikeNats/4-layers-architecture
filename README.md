@@ -1,6 +1,5 @@
 # 4 layer acrhitecture with React Redux
 
-This is a test
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
