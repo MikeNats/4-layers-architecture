@@ -6,7 +6,7 @@
     "@types/lodash": "^4.14.159",
     "@types/radium": "^0.24.2",
     "@types/styled-components": "^5.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "radium": "^0.26.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
